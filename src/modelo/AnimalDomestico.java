@@ -1,16 +1,16 @@
-package Modelo;
+package modelo;
 
 import java.util.*;
 
 /**
  * 
  */
-public class AnimalSalvaje extends Especie {
+public class AnimalDomestico extends Especie {
 
     /**
      * Default constructor
      */
-    public AnimalSalvaje() {
+    public AnimalDomestico() {
     }
 
     /**

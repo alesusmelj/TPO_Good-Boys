@@ -1,26 +1,26 @@
-package Modelo;
+package modelo;
 
 import java.util.*;
 
 /**
  * 
  */
-public class Control {
+public class Accion {
 
     /**
      * Default constructor
      */
-    public Control() {
+    public Accion() {
     }
 
     /**
      * 
      */
-    private List<Accion> accionesARealizar;
+    private String nombreAccion;
 
     /**
      * 
      */
-    private Date fecha;
+    private String descripcion;
 
 }

@@ -1,4 +1,5 @@
 package estadoCondicionMedica;
+import modelo.Animal;
 import java.util.*;
 
 public interface EstadoCondicionMedica {

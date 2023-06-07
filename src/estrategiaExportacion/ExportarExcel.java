@@ -2,6 +2,8 @@ package estrategiaExportacion;
 
 import java.util.*;
 
+import modelo.FichaTecnica;
+
 /**
  * 
  */

@@ -2,6 +2,8 @@ package adapterAutentificador;
 
 import java.util.*;
 
+import modelo.EtipoUsuario;
+
 /**
  * 
  */

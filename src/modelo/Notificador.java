@@ -1,6 +1,8 @@
-package Modelo;
+package modelo;
 
 import java.util.*;
+
+import estrategiaAdapterNotificacion.EstrategiaDeNotificacion;
 
 /**
  * 

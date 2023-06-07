@@ -1,5 +1,6 @@
 package estadoCondicionMedica;
 import java.util.*;
+import modelo.Animal;
 
 public class Saludable implements EstadoCondicionMedica {
 
@@ -8,7 +9,7 @@ public class Saludable implements EstadoCondicionMedica {
     }
     
     public void serAdoptado(Animal animal) {
-        animal.cambiarEstado(new Adoptado())
+        animal.cambiarEstado();
     }
 
 

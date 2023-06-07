@@ -2,6 +2,8 @@ package estadoSeguimiento;
 
 import java.util.*;
 
+import modelo.Seguimiento;
+
 /**
  * 
  */

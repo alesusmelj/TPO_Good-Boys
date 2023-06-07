@@ -1,26 +1,26 @@
-package Modelo;
+package modelo;
 
 import java.util.*;
 
 /**
  * 
  */
-public class Accion {
+public class Adopcion {
 
     /**
      * Default constructor
      */
-    public Accion() {
+    public Adopcion() {
     }
 
     /**
      * 
      */
-    private EAccion tipoAccion;
+    private Cliente cliente;
 
     /**
      * 
      */
-    private String descripcion;
+    private Animal animal;
 
 }
