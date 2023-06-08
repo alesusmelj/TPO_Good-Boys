@@ -11,10 +11,6 @@ public class Veterinario extends Usuario {
 
     public Veterinario(String nombre,String apellido, String nombreUsuario, String password) {
     	super(nombre, apellido, nombreUsuario, password);
-    	this.nombre = nombre;
-    	this.apellido = apellido;
-    	this.nombreUsuario = nombreUsuario;
-    	this.password = password;
     	this.nroMatricula = Utilidades.contadorNumeroMatricula();
     	this.tipoUsuario = EtipoUsuario.VETERINARIO;
     }

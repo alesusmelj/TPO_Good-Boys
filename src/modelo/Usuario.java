@@ -12,14 +12,19 @@ public abstract class Usuario implements IAdapterAutenticador {
     protected String apellido;
     protected String nombreUsuario;
     protected String password;
-    protected IAdapterAutenticador autenticacion;
+    protected IAdapterAutenticador adapter;
     protected EtipoUsuario tipoUsuario;
+    protected boolean isAutenticado = false;
 	
     public Usuario(String nombre,String apellido, String nombreUsuario, String password) {
+    	this.nombre = nombre;
+    	this.apellido = apellido;
+    	this.nombreUsuario = nombreUsuario;
+    	this.password = password;
     };
 
     public void autenticar(String usuario, String password, EtipoUsuario tipoUsuario) {
-    	this.autenticacion.autenticar(usuario, password,tipoUsuario);
+    	this.adapter.autenticar(usuario, password, tipoUsuario);
     }
 
 	public String getNombreUsuario() {
@@ -45,5 +50,23 @@ public abstract class Usuario implements IAdapterAutenticador {
 	public void setTipoUsuario(EtipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+
+	public void setAdapter(IAdapterAutenticador adapter) {
+		this.adapter = adapter;
+	}
+
+	public boolean isAutenticado() {
+		return isAutenticado;
+	}
+
+	public void setAutenticado(boolean isAutenticado) {
+		this.isAutenticado = isAutenticado;
+	}
+	public void cerrarSesion() {
+		this.isAutenticado = false;
+		System.out.println("Cerrando la sesión...");
+		System.out.println(nombre+ " ha cerrado la sesión.");
+	}
+	
 
 }
