@@ -9,12 +9,14 @@ import modelo.Notificacion;
  */
 public class NotificacionPorSMS implements EstrategiaDeNotificacion {
 
-    public NotificacionPorSMS() {
-    }
-
     private AdapterNotificadorSMS adapter;
-
+    
+    public NotificacionPorSMS(AdapterNotificadorSMS adapter) {
+        super();
+        this.adapter = adapter;
+    }
     public void enviar(Notificacion notificacion) {
+    	this.adapter.enviarSMS(notificacion);
 
     }
 

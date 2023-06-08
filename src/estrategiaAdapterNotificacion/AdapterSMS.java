@@ -13,7 +13,7 @@ public class AdapterSMS implements AdapterNotificadorSMS {
     }
 
     public void enviarSMS(Notificacion notificacion) {
-
+    	System.out.println("Enviando SMS a "+notificacion.getCliente().getNombre() + " " + notificacion.getCliente().getApellido()+" por SMS: "+ " "+notificacion.getMensaje()+" ");
     }
 
 }

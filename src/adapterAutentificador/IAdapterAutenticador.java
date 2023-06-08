@@ -2,16 +2,13 @@ package adapterAutentificador;
 
 import java.util.*;
 
+import modelo.EtipoUsuario;
+
 /**
  * 
  */
 public interface IAdapterAutenticador {
 
-    /**
-     * @param usuario 
-     * @param password 
-     * @return
-     */
-    public boolean autenticar(String usuario, String password);
+    public void autenticar(String usuario, String password, EtipoUsuario tipoUsuario);
 
 }

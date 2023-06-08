@@ -15,11 +15,6 @@ public class Visitador extends Usuario {
     	this.tipoUsuario = EtipoUsuario.VISITADOR;
     }
 
-    public boolean autenticar(String usuario, String password, EtipoUsuario tipoUsuario) {
-        // TODO implement here
-        return false;
-    }
-
     public void completarEncuesta(EncuestaVisitador encuesta) {
     }
 

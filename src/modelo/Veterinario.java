@@ -21,11 +21,6 @@ public class Veterinario extends Usuario {
     private int nroMatricula;
     private EtipoUsuario tipoUsuario;
     
-    public boolean autenticar(String usuario, String password, EtipoUsuario tipoUsuario) {
-        // TODO implement here
-        return false;
-    }
-
 	public int getNroMatricula() {
 		return nroMatricula;
 	}
