@@ -9,7 +9,7 @@ public class Saludable implements EstadoCondicionMedica {
     }
     
     public void serAdoptado(Animal animal) {
-        animal.cambiarEstado();
+        animal.cambiarEstado(null);
     }
 
 

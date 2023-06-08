@@ -8,20 +8,15 @@ import adapterAutentificador.IAdapterAutenticador;
  * 
  */
 public abstract class Usuario {
-
-    /**
-     * Default constructor
-     */
-    public Usuario() {
-    }
-
-
-    private String nombre;
-    private String apellido;
-    private String nombreUsuario;
-    private String password;
-    private IAdapterAutenticador autenticacion;
-    private EtipoUsuario tipoUsuario;
+    protected String nombre;
+    protected String apellido;
+    protected String nombreUsuario;
+    protected String password;
+    protected IAdapterAutenticador autenticacion;
+    protected EtipoUsuario tipoUsuario;
+	
+    public Usuario(String nombre,String apellido, String nombreUsuario, String password) {
+    };
 
     public boolean autenticar(String usuario, String password, EtipoUsuario tipoUsuario) {
         // TODO implement here

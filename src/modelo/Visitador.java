@@ -10,7 +10,8 @@ public class Visitador extends Usuario {
 
     private EtipoUsuario tipoUsuario;
 
-    public Visitador() {
+    public Visitador(String nombre,String apellido, String nombreUsuario, String password) {
+    	super(nombre, apellido, nombreUsuario, password);
     	this.tipoUsuario = EtipoUsuario.VISITADOR;
     }
 
