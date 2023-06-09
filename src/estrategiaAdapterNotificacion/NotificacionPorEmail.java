@@ -23,6 +23,4 @@ public class NotificacionPorEmail implements EstrategiaDeNotificacion {
 	public void setAdapter(AdapterNotificadorEmail adapter) {
 		this.adapter = adapter;
 	}
-
-
 }

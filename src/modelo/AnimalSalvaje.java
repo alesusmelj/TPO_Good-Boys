@@ -1,20 +1,24 @@
 package modelo;
 
-import java.util.*;
-
-/**
- * 
- */
 public class AnimalSalvaje extends Animal {
     public AnimalSalvaje(Especie especie, double altura, double peso, double edadAproximada) {
-    	super(especie, altura, altura, altura);
+        super(especie, altura, altura, altura);
     }
 
-    /**
-     * @return
-     */
     public boolean esAdoptable() {
-    	return false;
+        return false;
+    }
+
+    @Override
+    public void recuperar(Animal animal) {
+        this.estado.recuperar(this);
+
+    }
+
+    @Override
+    public void serAdoptado(Animal animal) {
+        this.estado.serAdoptado(this);
+
     }
 
 }

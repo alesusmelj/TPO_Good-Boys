@@ -85,5 +85,8 @@ public class claseTest {
 		}
 		System.out.println(notificacion.toString());
 		notificador.enviar(notificacion);
+		primerGato.recuperar(primerGato);
+		primerGato.recuperar(primerGato);
+		primerGato.recuperar(primerGato);
 	}
 }
