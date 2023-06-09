@@ -10,7 +10,10 @@ import estadoSeguimiento.EstadoSeguimiento;
 public class Seguimiento implements EstadoSeguimiento {
 
 
-    public Seguimiento() {
+    public Seguimiento(Adopcion adopcionAsociada, Visitador responsableSeguimiento,CadenciaVisitas cadenciaVisitas) {
+    	this.adopcionAsociada = adopcionAsociada;
+    	this.responsableSeguimiento = responsableSeguimiento;
+    	this.cadenciaVisitas = cadenciaVisitas;
     }
 
     private Visitador responsableSeguimiento;
@@ -50,6 +53,16 @@ public class Seguimiento implements EstadoSeguimiento {
 	@Override
 	public void enviarEncuesta(Seguimiento seguimiento) {
 		
+	}
+
+
+	public Notificador getNotificador() {
+		return notificador;
+	}
+
+
+	public void setNotificador(Notificador notificador) {
+		this.notificador = notificador;
 	}
 
 }

@@ -9,16 +9,18 @@ import estrategiaAdapterNotificacion.EstrategiaDeNotificacion;
  */
 public class Notificador {
 
+    private EstrategiaDeNotificacion estrategiaNotificacion;
+    private Notificacion notificacion;
+	
     public Notificador() {
     }
 
-    private EstrategiaDeNotificacion estrategiaNotificacion;
-    private Notificacion notificacion;
-
     public void enviar(Notificacion notificacion) {
+    	this.estrategiaNotificacion.enviar(notificacion);
     }
 
     public void cambiarEstrategiaNotificacion(EstrategiaDeNotificacion nuevaEstrategia) {
+    	this.estrategiaNotificacion = nuevaEstrategia;
     }
 
 }

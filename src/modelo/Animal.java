@@ -2,39 +2,45 @@ package modelo;
 
 import java.util.*;
 
-import estadoCondicionMedica.EstadoCondicionMedica;
-
-/**
- * 
- */
 public abstract class Animal {
 
-    public Animal() {
+    protected Especie especie;
+    protected double altura;
+    protected double peso;
+    protected double edadAproximada;
+    protected boolean isSaludable;
+	
+    public Animal(Especie especie, double altura, double peso, double edadAproximada) {
+    	this.especie = especie;
+    	this.altura = altura;
+    	this.peso = peso;
+    	this.edadAproximada = edadAproximada;
+    	this.isSaludable = false;
     }
-
-    private Especie especie;
-    private double altura;
-    private double peso;
-    private double edadAproximada;
-    private EstadoCondicionMedica estado;
 
     public boolean esAdoptable() {
         // TODO implement here
         return false;
     }
-
-
-    public void cambiarEstado(EstadoCondicionMedica estado) {
-
-    }
-
-
-    public void recuperar() {
-
-    }
-
     public void serAdoptado() {
-
     }
+
+	@Override
+	public String toString() {
+		return  especie + " altura: " + altura + "cm, peso: " + peso + "kg, edad aproximada: "
+				+ edadAproximada + " años ";
+	}
+
+	public Especie getEspecie() {
+		return especie;
+	}
+
+	public boolean isSaludable() {
+		return isSaludable;
+	}
+
+	public void setSaludable(boolean isSaludable) {
+		this.isSaludable = isSaludable;
+	}
 
 }

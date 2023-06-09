@@ -7,20 +7,12 @@ import java.util.*;
  */
 public class Adopcion {
 
-    /**
-     * Default constructor
-     */
-    public Adopcion() {
+    public Adopcion(Cliente cliente, Animal animal) {
+    	this.cliente = cliente;
+    	this.animal = animal;
     }
 
-    /**
-     * 
-     */
     private Cliente cliente;
-
-    /**
-     * 
-     */
     private Animal animal;
 
 }

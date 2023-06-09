@@ -5,20 +5,14 @@ import java.util.*;
 /**
  * 
  */
-public class AnimalDomestico extends Especie {
+public class AnimalDomestico extends Animal {
 
-    /**
-     * Default constructor
-     */
-    public AnimalDomestico() {
+    public AnimalDomestico(Especie especie, double altura, double peso, double edadAproximada) {
+    	super(especie, altura, peso, edadAproximada);
     }
 
-    /**
-     * @return
-     */
     public boolean esAdoptable() {
-        // TODO implement here
-        return false;
+    	return isSaludable;
     }
 
 }

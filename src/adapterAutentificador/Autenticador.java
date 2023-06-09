@@ -14,6 +14,7 @@ public class Autenticador implements IAdapterAutenticador {
     	boolean iniciadoAux = false;
     	int contadorAux = 0;
     	System.out.println("Iniciando sesión...");
+    	Utilidades.esperar(1);
     	for(Usuario u:Utilidades.getUsuarios()) {
     		contadorAux++;
     	if(iniciadoAux == false) {

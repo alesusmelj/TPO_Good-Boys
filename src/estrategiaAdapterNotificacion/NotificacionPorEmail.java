@@ -9,21 +9,20 @@ import modelo.Notificacion;
  */
 public class NotificacionPorEmail implements EstrategiaDeNotificacion {
 
-    /**
-     * Default constructor
-     */
-    public NotificacionPorEmail() {
-    }
-
-    /**
-     * 
-     */
     private AdapterNotificadorEmail adapter;
 
+    public NotificacionPorEmail(AdapterNotificadorEmail adapter) {
+    	super();
+    	this.adapter = adapter;
+    }
 
     public void enviar(Notificacion notificacion) {
-        // TODO implement here
+    	this.adapter.enviarEmail(notificacion);
     }
+
+	public void setAdapter(AdapterNotificadorEmail adapter) {
+		this.adapter = adapter;
+	}
 
 
 }

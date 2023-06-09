@@ -9,9 +9,6 @@ import modelo.Notificacion;
  */
 public interface EstrategiaDeNotificacion {
 
-    /**
-     * @param notificacion
-     */
     public void enviar(Notificacion notificacion);
 
 }

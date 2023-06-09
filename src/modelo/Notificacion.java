@@ -1,5 +1,6 @@
 package modelo;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -7,11 +8,15 @@ import java.util.*;
  */
 public class Notificacion {
 
-    public Notificacion() {
+    public Notificacion(String mensaje,Cliente cliente,int diasPreferencia) {
+    	this.mensaje = mensaje;
+    	this.cliente = cliente;
+    	this.diasPreferencia= diasPreferencia;
+    	this.fecha = LocalDateTime.now();
     }
 
     private String mensaje;
-    private Date fecha;
+    private LocalDateTime fecha;
     private Cliente cliente;
     private int diasPreferencia;
     
@@ -27,5 +32,11 @@ public class Notificacion {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	@Override
+	public String toString() {
+		return "Notificacion [mensaje=" + mensaje + ", fecha=" + fecha + ", cliente=" + cliente + ", diasPreferencia="
+				+ diasPreferencia + "]";
+	}
+	
 
 }

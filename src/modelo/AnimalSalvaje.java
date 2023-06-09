@@ -5,20 +5,16 @@ import java.util.*;
 /**
  * 
  */
-public class AnimalSalvaje extends Especie {
-
-    /**
-     * Default constructor
-     */
-    public AnimalSalvaje() {
+public class AnimalSalvaje extends Animal {
+    public AnimalSalvaje(Especie especie, double altura, double peso, double edadAproximada) {
+    	super(especie, altura, altura, altura);
     }
 
     /**
      * @return
      */
     public boolean esAdoptable() {
-        // TODO implement here
-        return false;
+    	return false;
     }
 
 }
