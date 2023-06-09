@@ -5,15 +5,20 @@ import java.util.*;
 /**
  * 
  */
-public class TratamientoMedico {
+public class TratamientoMedico implements TipoAlarma{
 
     /**
      * Default constructor
      */
-    public TratamientoMedico() {
+    public TratamientoMedico(Date fechaInicio, Date fechaFin, String desc, String nombre, int periodicidad) {
+    	this.fechaInicio = fechaInicio;
+    	this.fechaFin = fechaFin;
+    	this.descripcion = desc;
+    	this.nombre = nombre;
+    	this.periodicidad = periodicidad;
+    	this.estaFinalizado = false;
     }
 
-    private Animal animal;
     private Date fechaInicio;
     private Date fechaFin;
     private List<Accion> acciones;
@@ -30,5 +35,14 @@ public class TratamientoMedico {
     public void modificarTratamiento() {
     	
     }
+    
+    public void agregarAccion (Accion accion) {
+    	this.acciones.add(accion);
+    }
+
+	@Override
+	public void crearAlarma() {
+		Alarma alarma = new Alarma(this);	
+	}
 
 }

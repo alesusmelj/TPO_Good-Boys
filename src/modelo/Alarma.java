@@ -10,7 +10,8 @@ public class Alarma {
     /**
      * Default constructor
      */
-    public Alarma() {
+    public Alarma(TipoAlarma tipoAlarma) {
+    	this.tipo = tipoAlarma;
     }
 
 

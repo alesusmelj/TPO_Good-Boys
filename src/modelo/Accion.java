@@ -10,7 +10,9 @@ public class Accion {
     /**
      * Default constructor
      */
-    public Accion() {
+    public Accion(String nombreAccion, String desc) {
+    	this.nombreAccion = nombreAccion;
+    	this.descripcion = desc;
     }
 
     /**

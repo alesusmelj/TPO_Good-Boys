@@ -9,17 +9,21 @@ import estrategiaExportacion.IExportar;
  */
 public class FichaTecnica {
 
-    public FichaTecnica() {
+    public FichaTecnica(Animal animal) {
+    	this.animal = animal;
+    	
     }
 
     private Animal animal;
-    private IExportar exportar;
     private List<TratamientoMedico> tratamiento;
     private List<Control> controles;
-
-
-    public void exportar() {
-
+    
+    public void agregarTratamiento(TratamientoMedico tratamientoMedico) {
+    	this.tratamiento.add(tratamientoMedico);
+    }
+    
+    public void agregarControl(Control control) {
+    	this.controles.add(control);
     }
 
 }
