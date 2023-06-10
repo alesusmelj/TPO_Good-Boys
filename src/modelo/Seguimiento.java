@@ -4,9 +4,6 @@ import java.util.*;
 
 import estadoSeguimiento.EstadoSeguimiento;
 
-/**
- * 
- */
 public class Seguimiento implements EstadoSeguimiento {
 
 

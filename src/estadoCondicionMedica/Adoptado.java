@@ -4,16 +4,11 @@ import modelo.Animal;
 
 public class Adoptado implements EstadoCondicionMedica {
 
-    @Override
     public void recuperar(Animal animal) {
-        System.out.println("hola");
-
+        System.out.println("El animal no se puede recuperar porque ya ha sido adoptado.");
     }
 
-    @Override
     public void serAdoptado(Animal animal) {
-        // TODO Auto-generated method stub
-
+        System.out.println("El animal ya ha sido adoptado.");
     }
-
 }
