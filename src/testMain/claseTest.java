@@ -70,49 +70,53 @@ public class claseTest {
 		humberto.setAdapter(autenticacion);
 		Utilidades.setUsuario(humberto);
 
-		//Autenticaci�n de Veterinarios
+		//Autenticación de Veterinarios
 		juan.autenticar("juan2023","12345", juan.getTipoUsuario());
 		
 		//Autenticacion de Visitadores
-		
+		humberto.autenticar("humberto2023", "123", humberto.getTipoUsuario());
 		
 		//Creacion de especies
-		Especie perro = new Especie("Perro",EtipoAnimal.DOMESTICO);
+		Especie perro = new Especie("Perro", EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(perro);
-		Especie gato = new Especie("Gato",EtipoAnimal.DOMESTICO);
+		Especie gato = new Especie("Gato", EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(gato);
-		Especie canario = new Especie("Canario",EtipoAnimal.DOMESTICO);
+		Especie canario = new Especie("Canario", EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(canario);
-		Especie loro = new Especie("Loro",EtipoAnimal.DOMESTICO);
+		Especie loro = new Especie("Loro", EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(loro);
-		Especie tortuga = new Especie("Tortuga",EtipoAnimal.DOMESTICO);
+		Especie tortuga = new Especie("Tortuga", EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(tortuga);
-		Especie zorro = new Especie("Zorro",EtipoAnimal.SALVAJE);
+		Especie zorro = new Especie("Zorro", EtipoAnimal.SALVAJE);
 		Refugio.especies.add(zorro);
-		Especie pinguino = new Especie("Ping�ino",EtipoAnimal.SALVAJE);
+		Especie pinguino = new Especie("Pinguino", EtipoAnimal.SALVAJE);
 		Refugio.especies.add(pinguino);
-		Especie halcon = new Especie("Halc�n",EtipoAnimal.SALVAJE);
+		Especie halcon = new Especie("Halcón", EtipoAnimal.SALVAJE);
 		Refugio.especies.add(halcon);
 		
 		//Creacion de Animal
 		Animal primerGato = new AnimalDomestico(gato,15,3,5);
 		Utilidades.esperar(2);
-		System.out.println("Acaba de ingresar un animal al refugio");
+		System.out.println("Acaba de ingresar un animal al refugio.");
 		System.out.println(primerGato.toString());
+
 		//Creacion de Cliente
-		Cliente pablo = new Cliente("pablo","diaz","soltero","pablodiaz@gmail.com","12345","empleado",false,"quiero adoptar","Gato",0);
+		Cliente pablo = new Cliente("Pablo","Diaz","Soltero","pablodiaz@gmail.com","12345","Empleado",false,"Quiero adoptar","Gato",0);
 		Utilidades.esperar(2);
-		System.out.println("Acaba de ingresar un cliente al refugio interesado por adoptar un animal");
+		System.out.println("Acaba de ingresar un cliente al refugio interesado por adoptar un animal.");
+
 		primerGato.setSaludable(true);
 		Utilidades.esperar(2);
-		pablo.solicitarAdopcion(primerGato,humberto,new CadenciaVisitas(EDiaVisita.LUNES),EpreferenciaRecordatorio.SMS);
-		Notificacion notificacion = new Notificacion("que onda amigo",pablo,2);
+
+		pablo.solicitarAdopcion(primerGato, humberto, new CadenciaVisitas(EDiaVisita.LUNES), EpreferenciaRecordatorio.SMS);
+		Notificacion notificacion = new Notificacion("que onda amigo", pablo, 2);
 		
 		switch(pablo.getPreferenciaRecordatorio()) {
-		case SMS: notificador.cambiarEstrategiaNotificacion(notificadorSMS); break;
-		case WHATSAPP: notificador.cambiarEstrategiaNotificacion(notificadorWhatsApp); break;
-		case EMAIL: notificador.cambiarEstrategiaNotificacion(notificadorEmail); break;
+			case SMS: notificador.cambiarEstrategiaNotificacion(notificadorSMS); break;
+			case WHATSAPP: notificador.cambiarEstrategiaNotificacion(notificadorWhatsApp); break;
+			case EMAIL: notificador.cambiarEstrategiaNotificacion(notificadorEmail); break;
 		}
+
 		System.out.println(notificacion.toString());
 		notificador.enviar(notificacion);
 		primerGato.recuperar(primerGato);
@@ -124,6 +128,7 @@ public class claseTest {
 		exportador.exportar(animal.getFichaTecnica());
 		animal.setSaludable(true);
 		adopcionController.crearAdopcion(pablo, animal, humberto, new CadenciaVisitas(EDiaVisita.JUEVES));
+
 //		Cliente cliente2 = clienteController.crearCliente();
 //		System.out.println(cliente2.toString());
 		

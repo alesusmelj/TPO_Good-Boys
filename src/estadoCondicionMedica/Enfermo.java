@@ -4,17 +4,19 @@ import modelo.Animal;
 
 public class Enfermo implements EstadoCondicionMedica {
 
-    @Override
     public void recuperar(Animal animal) {
-        System.out.println("El animal se recuperó");
-        animal.setEstado(new Saludable());
-
+        System.out.println("El animal se recuperÃ³.");
+        animal.cambiarEstado(new Saludable());
+        animal.setSaludable(true);
     }
 
-    @Override
     public void serAdoptado(Animal animal) {
-        // TODO Auto-generated method stub
 
+        if(animal.esAdoptable()) {
+            System.out.println("El animal no puede ser adoptado, debe recuperarse antes.");
+        }
+        else{
+            System.out.println("El animal no puede ser adoptado, es un animal salvaje y se encuentra enfermo.");
+        }
     }
-
 }
