@@ -23,10 +23,6 @@ public class Alarma {
 
     public void modificarAlarma() {
     }
-    
-    public void crearAlarma() {
-    	this.tipo.crearAlarma();
-    }
 
 	public Alarma() {
 	}

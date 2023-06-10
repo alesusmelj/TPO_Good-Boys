@@ -13,12 +13,12 @@ public class Control implements TipoAlarma{
     }
     
 	@Override
-	public void crearAlarma() {
+	public Alarma crearAlarma(TipoAlarma tipo) {
 		Alarma alarma = new Alarma(this);
-		
+		return alarma;
 	}
 
-	public void agregarAcccion (Accion accion) {
+	public void agregarAccion (Accion accion) {
 		this.accionesARealizar.add(accion);
 	}
 

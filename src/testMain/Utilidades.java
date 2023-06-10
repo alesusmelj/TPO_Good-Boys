@@ -2,7 +2,11 @@ package testMain;
 import modelo.Adopcion;
 import modelo.Refugio;
 import modelo.Usuario;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Utilidades {
 
@@ -33,4 +37,16 @@ public class Utilidades {
 			System.out.println(e);
 		}
 	}
+	public LocalDateTime solicitarUnaFecha() {
+        Scanner scanner = new Scanner(System.in);
+        // Solicitar al usuario que ingrese una fecha
+        System.out.print("Ingrese una fecha (formato: dd/MM/yyyy HH:mm:ss): ");
+        String fechaIngresada = scanner.nextLine();
+        // Definir el formato de la fecha
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        LocalDateTime fecha = LocalDateTime.parse(fechaIngresada, formatter);
+		return fecha;
+	 
+    } 
+	
 }

@@ -7,5 +7,13 @@ public class Refugio {
 	public static ArrayList<Adopcion> adopciones = new ArrayList<Adopcion>();
 	public static ArrayList<Animal> animales = new ArrayList<Animal>();
 	public static ArrayList<Especie> especies = new ArrayList<Especie>();
+	public static Usuario userConectado;
+	
+	public static Usuario getUserConectado() {
+		return userConectado;
+	}
+	public static void setUserConectado(Usuario userConectado) {
+		Refugio.userConectado = userConectado;
+	}
 	
 }
