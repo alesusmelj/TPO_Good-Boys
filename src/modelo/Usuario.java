@@ -1,12 +1,8 @@
 package modelo;
 
 import java.util.*;
-
 import adapterAutentificador.IAdapterAutenticador;
 
-/**
- * 
- */
 public abstract class Usuario implements IAdapterAutenticador {
     protected String nombre;
     protected String apellido;
@@ -64,8 +60,8 @@ public abstract class Usuario implements IAdapterAutenticador {
 	}
 	public void cerrarSesion() {
 		this.isAutenticado = false;
-		System.out.println("Cerrando la sesión...");
-		System.out.println(nombre+ " ha cerrado la sesión.");
+		System.out.println("Cerrando la sesiÃ³n...");
+		System.out.println(nombre+ " ha cerrado la sesiÃ³n.");
 	}
 	
 

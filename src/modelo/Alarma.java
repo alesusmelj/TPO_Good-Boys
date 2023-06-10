@@ -29,7 +29,6 @@ public class Alarma {
     }
 
 	public Alarma() {
-		super();
 	}
 
 }

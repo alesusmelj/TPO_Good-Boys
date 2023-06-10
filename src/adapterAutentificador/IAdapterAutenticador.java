@@ -1,7 +1,6 @@
 package adapterAutentificador;
 
 import java.util.*;
-
 import modelo.EtipoUsuario;
 
 public interface IAdapterAutenticador {

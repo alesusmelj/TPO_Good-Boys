@@ -35,35 +35,44 @@ import modelo.Visitador;
 public class claseTest {
 
 	public static void main(String[] args) {
+
 		//--Controladores--
 		ClienteController clienteController = new ClienteController();
 		AnimalController animalController = new AnimalController();
 		AdopcionController adopcionController = new AdopcionController();
+
 		//---Notificador---
 		Notificador notificador = new Notificador();
 		EstrategiaDeNotificacion notificadorSMS = new NotificacionPorSMS(new AdapterSMS());
 		EstrategiaDeNotificacion notificadorWhatsApp = new NotificacionPorWhatsApp(new AdapterWhatsApp());
 		EstrategiaDeNotificacion notificadorEmail = new NotificacionPorEmail(new AdapterEmail());
+
 		//---Exportador---
 		Exportador exportador = new Exportador();
 		IExportar exportarPDF = new ExportarPDF(new AdapterPDF());
 		IExportar exportarExcel = new ExportarExcel(new AdapterExcel());
+
 		//----Autenticador----
 		IAdapterAutenticador autenticacion = new Autenticador();
+
 		//Agregamos un veterinario y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
 		Veterinario juan = new Veterinario("Juan","Martinez","juan2023","12345");
 		juan.setAdapter(autenticacion);
 		Utilidades.setUsuario(juan);
+
 		//Agregamos otro veterinario y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
 		Veterinario maria = new Veterinario("Maria","Gomez","maria2023","6789");
 		maria.setAdapter(autenticacion);
-		Utilidades.setUsuario(maria);		
+		Utilidades.setUsuario(maria);
+
 		//Agregamos visitador y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
 		Visitador humberto = new Visitador("Humberto","Felk","humberto2023","123");
 		humberto.setAdapter(autenticacion);
-		Utilidades.setUsuario(humberto);		
-		//Autenticación de Veterinarios
+		Utilidades.setUsuario(humberto);
+
+		//Autenticaciï¿½n de Veterinarios
 		juan.autenticar("juan2023","12345", juan.getTipoUsuario());
+		
 		//Autenticacion de Visitadores
 		
 		
@@ -80,9 +89,9 @@ public class claseTest {
 		Refugio.especies.add(tortuga);
 		Especie zorro = new Especie("Zorro",EtipoAnimal.SALVAJE);
 		Refugio.especies.add(zorro);
-		Especie pinguino = new Especie("Pingüino",EtipoAnimal.SALVAJE);
+		Especie pinguino = new Especie("Pingï¿½ino",EtipoAnimal.SALVAJE);
 		Refugio.especies.add(pinguino);
-		Especie halcon = new Especie("Halcón",EtipoAnimal.SALVAJE);
+		Especie halcon = new Especie("Halcï¿½n",EtipoAnimal.SALVAJE);
 		Refugio.especies.add(halcon);
 		
 		//Creacion de Animal
@@ -120,10 +129,10 @@ public class claseTest {
 	}
 //	public void solicitarAutenticacion() {
 //    	Scanner entrada = new Scanner(System.in);
-//    	System.out.println("------------BIENVENIDO A GUD BOY, POR FAVOR INICE SESIÓN----------");
+//    	System.out.println("------------BIENVENIDO A GUD BOY, POR FAVOR INICE SESIï¿½N----------");
 //		System.out.println("Ingrese su nombre de usuario: ");  
 //		String usuario = entrada.nextLine();
-//		System.out.println("Ingrese su contraseña: ");  
+//		System.out.println("Ingrese su contraseï¿½a: ");  
 //		String password = entrada.nextLine();
 //		System.out.println("Seleccione su rol: \n 1-Veterinario\n 2-Visitador");
 //		String seleccion = entrada.nextLine();
