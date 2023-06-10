@@ -94,27 +94,26 @@ public class claseTest {
 		Cliente pablo = new Cliente("pablo","diaz","soltero","pablodiaz@gmail.com","12345","empleado",false,"quiero adoptar","Gato",0);
 		Utilidades.esperar(2);
 		System.out.println("Acaba de ingresar un cliente al refugio interesado por adoptar un animal");
-		primerGato.setSaludable(true);
 		Utilidades.esperar(2);
-		pablo.solicitarAdopcion(primerGato,humberto,new CadenciaVisitas(EDiaVisita.LUNES),EpreferenciaRecordatorio.SMS);
-		Notificacion notificacion = new Notificacion("que onda amigo",pablo,2);
+		//pablo.solicitarAdopcion(primerGato,humberto,new CadenciaVisitas(EDiaVisita.LUNES),EpreferenciaRecordatorio.SMS);
 		
-		switch(pablo.getPreferenciaRecordatorio()) {
-		case SMS: notificador.cambiarEstrategiaNotificacion(notificadorSMS); break;
-		case WHATSAPP: notificador.cambiarEstrategiaNotificacion(notificadorWhatsApp); break;
-		case EMAIL: notificador.cambiarEstrategiaNotificacion(notificadorEmail); break;
-		}
-		System.out.println(notificacion.toString());
-		notificador.enviar(notificacion);
 		primerGato.recuperar(primerGato);
 		primerGato.recuperar(primerGato);
 		primerGato.recuperar(primerGato);
 		Animal animal = animalController.ingresarAnimal();
+		animal.recuperar(animal);
 		System.out.println(animal.toString());
 		exportador.cambiarEstrategia(exportarExcel);
 		exportador.exportar(animal.getFichaTecnica());
-		animal.setSaludable(true);
 		adopcionController.crearAdopcion(pablo, animal, humberto, new CadenciaVisitas(EDiaVisita.JUEVES));
+		Notificacion notificacion = new Notificacion("que onda amigo",pablo,2);
+		switch(pablo.getPreferenciaRecordatorio()) {
+			case SMS: notificador.cambiarEstrategiaNotificacion(notificadorSMS); break;
+			case WHATSAPP: notificador.cambiarEstrategiaNotificacion(notificadorWhatsApp); break;
+			case EMAIL: notificador.cambiarEstrategiaNotificacion(notificadorEmail); break;
+		}
+		System.out.println(notificacion.toString());
+		notificador.enviar(notificacion);
 //		Cliente cliente2 = clienteController.crearCliente();
 //		System.out.println(cliente2.toString());
 		

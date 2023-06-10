@@ -2,6 +2,8 @@ package modelo;
 
 import java.util.*;
 
+import estadoCondicionMedica.Saludable;
+
 /**
  
 */
@@ -15,7 +17,10 @@ public class AnimalDomestico extends Animal {
     }
 
     public boolean esAdoptable() {
-        return isSaludable;
+    	if(this.estado.getClass().equals(Saludable.class)) {
+    		return true;
+    	}
+        return false;
     }
 
     @Override
