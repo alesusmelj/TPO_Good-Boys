@@ -10,5 +10,6 @@ public class SeguimientoTratamiento {
     private String comentario;
 
     public SeguimientoTratamiento() {
+    	
     }
 }
