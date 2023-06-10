@@ -14,6 +14,10 @@ public abstract class Animal implements EstadoCondicionMedica{
     protected double peso;
     protected double edadAproximada;
     protected boolean isSaludable;
+    
+    public Animal() {
+    	
+    }
 
     public Animal(Especie especie, double altura, double peso, double edadAproximada) {
         this.especie = especie;
@@ -60,5 +64,33 @@ public abstract class Animal implements EstadoCondicionMedica{
     public void setEstado(EstadoCondicionMedica estado) {
         this.estado = estado;
     }
+
+	public double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+
+	public double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+
+	public double getEdadAproximada() {
+		return edadAproximada;
+	}
+
+	public void setEdadAproximada(double edadAproximada) {
+		this.edadAproximada = edadAproximada;
+	}
+
+	public void setEspecie(Especie especie) {
+		this.especie = especie;
+	}
 
 }

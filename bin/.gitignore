@@ -1,4 +1,5 @@
-/modelo/
+/controllers/
 /estrategiaAdapterNotificacion/
-/estadoCondicionMedica/
+/estrategiaExportacion/
+/modelo/
 /testMain/

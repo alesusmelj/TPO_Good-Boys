@@ -7,24 +7,16 @@ import modelo.FichaTecnica;
 /**
  * 
  */
-public class ExportarExcel {
-
-    /**
-     * Default constructor
-     */
-    public ExportarExcel() {
+public class ExportarExcel implements IExportar {
+	private AdapterExportarExcel adapter;
+	
+    public ExportarExcel(AdapterExportarExcel adapter) {
+    	super();
+    	this.adapter = adapter;
     }
 
-    /**
-     * 
-     */
-    private AdapterExportarExcel adapter;
-
-    /**
-     * @param fichaTecnica 
-     * @return
-     */
-    public void Exportar(FichaTecnica fichaTecnica) {
+    public void exportar(FichaTecnica fichaTecnica) {
+    	this.adapter.exportarExcel(fichaTecnica);
 
     }
 

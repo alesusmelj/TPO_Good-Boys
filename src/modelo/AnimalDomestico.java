@@ -7,6 +7,9 @@ import java.util.*;
 */
 public class AnimalDomestico extends Animal {
 
+	public AnimalDomestico() {
+		super();
+	}
     public AnimalDomestico(Especie especie, double altura, double peso, double edadAproximada) {
         super(especie, altura, peso, edadAproximada);
     }

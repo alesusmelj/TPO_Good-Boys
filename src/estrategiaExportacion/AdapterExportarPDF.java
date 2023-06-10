@@ -9,10 +9,6 @@ import modelo.FichaTecnica;
  */
 public interface AdapterExportarPDF {
 
-    /**
-     * @param fichaTecnica 
-     * @return
-     */
-    public void ExportarPDF(FichaTecnica fichaTecnica);
+    public void exportarPDF(FichaTecnica fichaTecnica);
 
 }

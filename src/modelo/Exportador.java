@@ -6,7 +6,7 @@ public class Exportador {
     private IExportar estrategiaExport;
     
     public void exportar(FichaTecnica fichaTecnica) {
-    	this.estrategiaExport.Exportar(fichaTecnica);
+    	this.estrategiaExport.exportar(fichaTecnica);
     }
     
     public void cambiarEstrategia(IExportar estrategiaExport) {

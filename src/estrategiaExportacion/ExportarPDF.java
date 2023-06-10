@@ -9,23 +9,17 @@ import modelo.FichaTecnica;
  */
 public class ExportarPDF {
 
-    /**
-     * Default constructor
-     */
-    public ExportarPDF() {
+	private AdapterExportarPDF adapter;
+	
+    public ExportarPDF(AdapterExportarPDF adapter) {
+    	super();
+    	this.adapter = adapter;
     }
 
-    /**
-     * 
-     */
-    private AdapterExportarPDF adapter;
 
-    /**
-     * @param fichaTecnica 
-     * @return
-     */
-    public void Exportar(FichaTecnica fichaTecnica) {
 
+    public void exportar(FichaTecnica fichaTecnica) {
+    	this.adapter.exportarPDF(fichaTecnica);
     }
 
 }

@@ -2,8 +2,13 @@ package testMain;
 
 import modelo.Veterinario;
 import modelo.Visitador;
+
+import java.util.Scanner;
+
 import adapterAutentificador.Autenticador;
 import adapterAutentificador.IAdapterAutenticador;
+import controllers.AnimalController;
+import controllers.ClienteController;
 import estrategiaAdapterNotificacion.AdapterSMS;
 import estrategiaAdapterNotificacion.EstrategiaDeNotificacion;
 import estrategiaAdapterNotificacion.NotificacionPorSMS;
@@ -20,13 +25,18 @@ import modelo.EDiaVisita;
 import modelo.EpreferenciaRecordatorio;
 import modelo.Especie;
 import modelo.EtipoAnimal;
+import modelo.EtipoUsuario;
 import modelo.Notificacion;
 import modelo.Notificador;
+import modelo.Refugio;
 import modelo.Usuario;
 
 public class claseTest {
 
 	public static void main(String[] args) {
+		//--Controladores--
+		ClienteController clienteController = new ClienteController();
+		AnimalController animalController = new AnimalController();
 		//---Notificador---
 		Notificador notificador = new Notificador();
 		EstrategiaDeNotificacion notificadorSMS = new NotificacionPorSMS(new AdapterSMS());
@@ -48,21 +58,26 @@ public class claseTest {
 		Utilidades.setUsuario(humberto);		
 		//Autenticación de Veterinarios
 		juan.autenticar("juan2023","12345", juan.getTipoUsuario());
-		maria.autenticar("maria2023","6789", maria.getTipoUsuario());
-		juan.cerrarSesion();
-		maria.autenticar("maria2023","6789", maria.getTipoUsuario());
 		//Autenticacion de Visitadores
 		
 		
 		//Creacion de especies
 		Especie perro = new Especie("Perro",EtipoAnimal.DOMESTICO);
+		Refugio.especies.add(perro);
 		Especie gato = new Especie("Gato",EtipoAnimal.DOMESTICO);
+		Refugio.especies.add(gato);
 		Especie canario = new Especie("Canario",EtipoAnimal.DOMESTICO);
-		Especie loro = new Especie("Canario",EtipoAnimal.DOMESTICO);
-		Especie tortuga = new Especie("Canario",EtipoAnimal.DOMESTICO);
+		Refugio.especies.add(canario);
+		Especie loro = new Especie("Loro",EtipoAnimal.DOMESTICO);
+		Refugio.especies.add(loro);
+		Especie tortuga = new Especie("Tortuga",EtipoAnimal.DOMESTICO);
+		Refugio.especies.add(tortuga);
 		Especie zorro = new Especie("Zorro",EtipoAnimal.SALVAJE);
+		Refugio.especies.add(zorro);
 		Especie pinguino = new Especie("Pingüino",EtipoAnimal.SALVAJE);
+		Refugio.especies.add(pinguino);
 		Especie halcon = new Especie("Halcón",EtipoAnimal.SALVAJE);
+		Refugio.especies.add(halcon);
 		
 		//Creacion de Animal
 		Animal primerGato = new AnimalDomestico(gato,15,3,5);
@@ -70,7 +85,7 @@ public class claseTest {
 		System.out.println("Acaba de ingresar un animal al refugio");
 		System.out.println(primerGato.toString());
 		//Creacion de Cliente
-		Cliente pablo = new Cliente("pablo","diaz","soltero","pablodiaz@gmail.com","12345","empleado",false,"quiero adoptar",gato,0);
+		Cliente pablo = new Cliente("pablo","diaz","soltero","pablodiaz@gmail.com","12345","empleado",false,"quiero adoptar","Gato",0);
 		Utilidades.esperar(2);
 		System.out.println("Acaba de ingresar un cliente al refugio interesado por adoptar un animal");
 		primerGato.setSaludable(true);
@@ -88,5 +103,21 @@ public class claseTest {
 		primerGato.recuperar(primerGato);
 		primerGato.recuperar(primerGato);
 		primerGato.recuperar(primerGato);
+		
+//		Cliente cliente2 = clienteController.crearCliente();
+//		System.out.println(cliente2.toString());
 	}
+//	public void solicitarAutenticacion() {
+//    	Scanner entrada = new Scanner(System.in);
+//    	System.out.println("------------BIENVENIDO A GUD BOY, POR FAVOR INICE SESIÓN----------");
+//		System.out.println("Ingrese su nombre de usuario: ");  
+//		String usuario = entrada.nextLine();
+//		System.out.println("Ingrese su contraseña: ");  
+//		String password = entrada.nextLine();
+//		System.out.println("Seleccione su rol: \n 1-Veterinario\n 2-Visitador");
+//		String seleccion = entrada.nextLine();
+//		EtipoUsuario tipoUsuario = EtipoUsuario.VETERINARIO;
+//		tipoUsuario = seleccion.contentEquals("1")  ? EtipoUsuario.valueOf("VETERINARIO")
+//				: EtipoUsuario.valueOf("VISITADOR");
+//	}
 }

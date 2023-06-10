@@ -1,6 +1,10 @@
 package modelo;
 
 public class AnimalSalvaje extends Animal {
+	
+	public AnimalSalvaje() {
+		super();
+	}
     public AnimalSalvaje(Especie especie, double altura, double peso, double edadAproximada) {
         super(especie, altura, altura, altura);
     }
