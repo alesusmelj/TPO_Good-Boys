@@ -14,6 +14,7 @@ public abstract class Animal implements EstadoCondicionMedica{
     protected double peso;
     protected double edadAproximada;
     protected boolean isSaludable;
+    protected FichaTecnica fichaTecnica;
     
     public Animal() {
     	
@@ -93,4 +94,12 @@ public abstract class Animal implements EstadoCondicionMedica{
 		this.especie = especie;
 	}
 
+	public void setFichaTecnica(FichaTecnica fichaTecnica) {
+		this.fichaTecnica = fichaTecnica;
+	}
+
+	public FichaTecnica getFichaTecnica() {
+		return fichaTecnica;
+	}
+	
 }

@@ -10,17 +10,16 @@ import estadoSeguimiento.EstadoSeguimiento;
 public class Seguimiento implements EstadoSeguimiento {
 
 
-    public Seguimiento(Adopcion adopcionAsociada, Visitador responsableSeguimiento,CadenciaVisitas cadenciaVisitas) {
-    	this.adopcionAsociada = adopcionAsociada;
+    public Seguimiento(Visitador responsableSeguimiento,CadenciaVisitas cadenciaVisitas) {
     	this.responsableSeguimiento = responsableSeguimiento;
     	this.cadenciaVisitas = cadenciaVisitas;
     }
 
     private Visitador responsableSeguimiento;
     private CadenciaVisitas cadenciaVisitas;
-    private Adopcion adopcionAsociada;
     private EstadoSeguimiento estado;
     private List<Visita> visitas;
+    
     public Notificador notificador;
 
 

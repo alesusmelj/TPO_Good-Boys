@@ -7,5 +7,5 @@ public class Refugio {
 	public static ArrayList<Adopcion> adopciones = new ArrayList<Adopcion>();
 	public static ArrayList<Animal> animales = new ArrayList<Animal>();
 	public static ArrayList<Especie> especies = new ArrayList<Especie>();
-
+	
 }

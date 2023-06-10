@@ -26,4 +26,9 @@ public class FichaTecnica {
     	this.controles.add(control);
     }
 
+	@Override
+	public String toString() {
+		return "FichaTecnica [animal=" + animal + "]";
+	}
+
 }

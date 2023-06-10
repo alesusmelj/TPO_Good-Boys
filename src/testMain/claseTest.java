@@ -1,22 +1,22 @@
 package testMain;
 
-import modelo.Veterinario;
-import modelo.Visitador;
-
-import java.util.Scanner;
-
 import adapterAutentificador.Autenticador;
 import adapterAutentificador.IAdapterAutenticador;
+import controllers.AdopcionController;
 import controllers.AnimalController;
 import controllers.ClienteController;
+import estrategiaAdapterNotificacion.AdapterEmail;
 import estrategiaAdapterNotificacion.AdapterSMS;
+import estrategiaAdapterNotificacion.AdapterWhatsApp;
 import estrategiaAdapterNotificacion.EstrategiaDeNotificacion;
+import estrategiaAdapterNotificacion.NotificacionPorEmail;
 import estrategiaAdapterNotificacion.NotificacionPorSMS;
 import estrategiaAdapterNotificacion.NotificacionPorWhatsApp;
-import estrategiaAdapterNotificacion.NotificacionPorEmail;
-import estrategiaAdapterNotificacion.AdapterWhatsApp;
-import estrategiaAdapterNotificacion.AdapterEmail;
-
+import estrategiaExportacion.AdapterExcel;
+import estrategiaExportacion.AdapterPDF;
+import estrategiaExportacion.ExportarExcel;
+import estrategiaExportacion.ExportarPDF;
+import estrategiaExportacion.IExportar;
 import modelo.Animal;
 import modelo.AnimalDomestico;
 import modelo.CadenciaVisitas;
@@ -25,11 +25,12 @@ import modelo.EDiaVisita;
 import modelo.EpreferenciaRecordatorio;
 import modelo.Especie;
 import modelo.EtipoAnimal;
-import modelo.EtipoUsuario;
+import modelo.Exportador;
 import modelo.Notificacion;
 import modelo.Notificador;
 import modelo.Refugio;
-import modelo.Usuario;
+import modelo.Veterinario;
+import modelo.Visitador;
 
 public class claseTest {
 
@@ -37,11 +38,16 @@ public class claseTest {
 		//--Controladores--
 		ClienteController clienteController = new ClienteController();
 		AnimalController animalController = new AnimalController();
+		AdopcionController adopcionController = new AdopcionController();
 		//---Notificador---
 		Notificador notificador = new Notificador();
 		EstrategiaDeNotificacion notificadorSMS = new NotificacionPorSMS(new AdapterSMS());
 		EstrategiaDeNotificacion notificadorWhatsApp = new NotificacionPorWhatsApp(new AdapterWhatsApp());
 		EstrategiaDeNotificacion notificadorEmail = new NotificacionPorEmail(new AdapterEmail());
+		//---Exportador---
+		Exportador exportador = new Exportador();
+		IExportar exportarPDF = new ExportarPDF(new AdapterPDF());
+		IExportar exportarExcel = new ExportarExcel(new AdapterExcel());
 		//----Autenticador----
 		IAdapterAutenticador autenticacion = new Autenticador();
 		//Agregamos un veterinario y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
@@ -103,9 +109,15 @@ public class claseTest {
 		primerGato.recuperar(primerGato);
 		primerGato.recuperar(primerGato);
 		primerGato.recuperar(primerGato);
-		
+		Animal animal = animalController.ingresarAnimal();
+		System.out.println(animal.toString());
+		exportador.cambiarEstrategia(exportarExcel);
+		exportador.exportar(animal.getFichaTecnica());
+		animal.setSaludable(true);
+		adopcionController.crearAdopcion(pablo, animal, humberto, new CadenciaVisitas(EDiaVisita.JUEVES));
 //		Cliente cliente2 = clienteController.crearCliente();
 //		System.out.println(cliente2.toString());
+		
 	}
 //	public void solicitarAutenticacion() {
 //    	Scanner entrada = new Scanner(System.in);

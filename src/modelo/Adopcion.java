@@ -8,14 +8,16 @@ public class Adopcion {
     private Animal animal;
     private Seguimiento seguimiento;
 
-    public Adopcion(Cliente cliente, Animal animal) {
+    public Adopcion(Cliente cliente, Animal animal, Seguimiento seguimiento) {
     	this.cliente = cliente;
     	this.animal = animal;
+    	this.seguimiento = seguimiento;
     }
     
     public Adopcion nuevaAdopcion() {
 		return null;
     	
     }
+    
 
 }

@@ -7,7 +7,7 @@ import modelo.FichaTecnica;
 /**
  * 
  */
-public class ExportarPDF {
+public class ExportarPDF implements IExportar{
 
 	private AdapterExportarPDF adapter;
 	

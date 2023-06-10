@@ -39,7 +39,7 @@ public class Cliente {
 
     public boolean solicitarAdopcion(Animal animal,Visitador visitador, CadenciaVisitas cadencia,EpreferenciaRecordatorio preferenciaRecordatorio) {
     	if(animal.esAdoptable() && this.puedeAdoptar()) {
-    		Seguimiento seguimiento= new Seguimiento(new Adopcion(this,animal),visitador,cadencia);
+    		Seguimiento seguimiento= new Seguimiento(visitador,cadencia);
     		this.preferenciaRecordatorio = preferenciaRecordatorio;
     		System.out.println("El animal "+animal.getEspecie()+" ha sido adoptado por: "+this.nombre+" "+this.apellido);
     		return true;
@@ -151,5 +151,6 @@ public class Cliente {
 	public String toString() {
 		return "Nombre: "+ nombre + " Apellido: " + apellido;
 	}
+	
 
 }
