@@ -3,3 +3,7 @@
 /testMain/
 /adapterAutentificador/
 /estadoCondicionMedica/
+/controlador/
+/estadoSeguimiento/
+/estrategiaAdapterNotificacion/
+/estrategiaExportacion/

@@ -1,13 +1,16 @@
 package controllers;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 import modelo.Accion;
 import modelo.Alarma;
 import modelo.Animal;
 import modelo.Control;
+import modelo.Refugio;
 import modelo.SeguimientoTratamiento;
 import modelo.TratamientoMedico;
+import modelo.Veterinario;
 import testMain.Utilidades;
 
 public class AlarmaController {
@@ -17,17 +20,17 @@ public class AlarmaController {
 		Alarma alarma = control.crearAlarma(control);
 		System.out.println("Se ha creado una nueva alarma de control");
 		configuracionAlarmaControl(control,animal);
+		Refugio.setAlarma(alarma);
 		alarma.enviarNotificacionPush();
 		return alarma;
 	}
 
 	public Alarma crearAlarmaTratamientoMedico(Animal animal) {
-		SeguimientoTratamiento seguimientoTratamiento = new SeguimientoTratamiento();
 		TratamientoMedico tratamiento = new TratamientoMedico();
-		seguimientoTratamiento.setTratamiento(tratamiento);
 		Alarma alarma = tratamiento.crearAlarma(tratamiento);
 		System.out.println("Se ha creado una nueva alarma de tratamiento medico");
 		configuracionAlarmaTratamiento(tratamiento, animal);
+		Refugio.setAlarma(alarma);
 		alarma.enviarNotificacionPush();
 		return alarma;
 	}
@@ -88,7 +91,38 @@ public class AlarmaController {
 		System.out.println("Por último. Por favor ingrese la fecha en la que finalizará el tratamiento");
 		tratamiento.setFechaFin(Utilidades.solicitarUnaFecha());
 	}
-//	public void enviarNotificacionPush(Alarma alarma, int periodo) {
-//		Utilidades.claseTimer(alarma, periodo);
-//	}
+	
+	public void atenderAlarma(Veterinario veterinario) {
+		
+	}
+	
+	public void atenderControl(Veterinario veterinario, Control control) {
+		control.setVeterinario(veterinario);
+		control.marcarFinalizado();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Ingrese a modo de comentario lo realizado en el segumiento del tratamiento:");
+		control.setComentario(sc.nextLine());
+	}
+
+	public void atenderTratamientoMedico(Veterinario veterinario, TratamientoMedico tratamientoMedico) {
+		SeguimientoTratamiento seguimientoTratamiento = new SeguimientoTratamiento();
+		tratamientoMedico.setVeterinario(veterinario);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Desea finalizar el tratamiento: "+ tratamientoMedico + "? (S/N)");
+		String respuesta = sc.nextLine();
+		while ((!respuesta.toUpperCase().equals("S")) && (!respuesta.toUpperCase().equals("N"))) {
+			System.out.println("Error. Desea finalizar el tratamiento: "+ tratamientoMedico + "? (S/N)");
+			respuesta = sc.nextLine();
+		}
+		if (respuesta.toUpperCase().equals("S")) {
+			tratamientoMedico.marcarFinalizado();
+			Refugio.getAlarmas().remove(tratamientoMedico);
+		}
+		seguimientoTratamiento.setVeterinario(veterinario);
+		seguimientoTratamiento.setFecha(LocalDateTime.now());
+		System.out.println("Ingrese a modo de comentario lo realizado en el segumiento del tratamiento:");
+		seguimientoTratamiento.setComentario(sc.nextLine());
+		seguimientoTratamiento.setTratamiento(tratamientoMedico);
+		tratamientoMedico.setSeguimientosTratamiento(seguimientoTratamiento);
+	}
 }

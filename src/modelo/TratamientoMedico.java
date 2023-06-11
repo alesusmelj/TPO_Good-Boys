@@ -15,6 +15,9 @@ public class TratamientoMedico implements TipoAlarma{
     private String nombre;
     private int periodicidad;
     private boolean estaFinalizado;
+    private Veterinario veterinario;
+    private ArrayList<SeguimientoTratamiento> seguimientosTratamiento;
+    private Timer timer;
 
     public TratamientoMedico(LocalDateTime fechaFin, String desc, String nombre, int periodicidad) {
     	this.fechaFin = fechaFin;
@@ -23,6 +26,7 @@ public class TratamientoMedico implements TipoAlarma{
     	this.periodicidad = periodicidad;
     	this.estaFinalizado = false;
     	this.acciones = new ArrayList();
+    	this.seguimientosTratamiento = new ArrayList();
     }
     
     public TratamientoMedico() {
@@ -31,6 +35,7 @@ public class TratamientoMedico implements TipoAlarma{
 
 	public void marcarFinalizado() {
     	this.estaFinalizado = true;
+    	this.timer.cancel();
     }
 
 
@@ -44,7 +49,7 @@ public class TratamientoMedico implements TipoAlarma{
 
 	@Override
 	public Alarma crearAlarma(TipoAlarma tipo) {
-		Alarma alarma = new Alarma(this);	
+		Alarma alarma = new Alarma(this);
 		return alarma;
 	}
 
@@ -114,11 +119,21 @@ public class TratamientoMedico implements TipoAlarma{
 	@Override
 	public void enviarNotificacionPush(Alarma alarma) {
 		if(Refugio.getUserConectado().getClass().equals(Veterinario.class)) {
-			Utilidades.claseTimer(alarma, periodicidad);
+			this.timer = Utilidades.claseTimer(alarma, periodicidad);
 		}
 		
 	}
-	
-	
+
+	public Veterinario getVeterinario() {
+		return veterinario;
+	}
+
+	public void setVeterinario(Veterinario veterinario) {
+		this.veterinario = veterinario;
+	}
+
+	public void setSeguimientosTratamiento(SeguimientoTratamiento seguimientosTratamiento) {
+		this.seguimientosTratamiento.add(seguimientosTratamiento);
+	}		
 
 }

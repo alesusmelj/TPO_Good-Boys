@@ -47,4 +47,7 @@ public class Refugio {
 		Refugio.alarmas.add(alarma);
 	}
 	
+	public static void eliminarAlarma(Alarma alarma) {
+		Refugio.alarmas.remove(alarma);
+	}
 }

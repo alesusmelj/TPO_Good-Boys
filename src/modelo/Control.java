@@ -7,10 +7,14 @@ public class Control implements TipoAlarma{
 
     private ArrayList<Accion> accionesARealizar;
     private LocalDateTime fecha;
+    private Veterinario veterinario;
+    private boolean estaFinalizado;
+    private String comentario;
     
     public Control() {
     	this.fecha = LocalDateTime.now();
     	this.accionesARealizar = new ArrayList();
+    	this.estaFinalizado = false;
     }
     
 	@Override
@@ -18,6 +22,10 @@ public class Control implements TipoAlarma{
 		Alarma alarma = new Alarma(this);
 		return alarma;
 	}
+	
+	public void marcarFinalizado() {
+    	this.estaFinalizado = true;
+    }
 
 	public void agregarAccion (Accion accion) {
 		this.accionesARealizar.add(accion);
@@ -33,6 +41,22 @@ public class Control implements TipoAlarma{
 		if(Refugio.getUserConectado().getClass().equals(Veterinario.class)) {
 			System.out.println(this.toString());
 		}
+	}
+
+	public Veterinario getVeterinario() {
+		return veterinario;
+	}
+
+	public void setVeterinario(Veterinario veterinario) {
+		this.veterinario = veterinario;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 	
 	

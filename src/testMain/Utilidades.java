@@ -16,7 +16,6 @@ import java.util.TimerTask;
 public class Utilidades {
 
 	public static int nroMatricula = 1;
-	public static Timer timer;
 
 	public static int contadorNumeroMatricula() {
 		int aux = nroMatricula;
@@ -43,8 +42,8 @@ public class Utilidades {
 	 
     } 
 	
-	public static void claseTimer(Alarma alarma, int periodo) {
-		timer = new Timer();
+	public static Timer claseTimer(Alarma alarma, int periodo) {
+		Timer timer = new Timer();
 		long tiempoInicial = 0;
 		long periodo2 = periodo*60*1000;
 		System.out.println(periodo2);
@@ -64,8 +63,10 @@ public class Utilidades {
             }
         };
         timer.scheduleAtFixedRate(task, tiempoInicial, periodo2);
+        return timer;
 	}
     public static long calcularDiferenciaFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
         return ChronoUnit.MINUTES.between(fechaInicio, fechaFin);
     }
 }
+

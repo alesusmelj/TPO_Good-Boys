@@ -18,7 +18,9 @@ public class Cliente {
     private EpreferenciaRecordatorio preferenciaRecordatorio;
     private int animalesAdoptados;
     
-    public Cliente() {}
+    public Cliente() {
+    	
+    }
     
     public Cliente(String nombre, String apellido, String estadoCivil, String email, String telefono, String ocupacion, boolean otrasMascotas, String motivoAdopcion,
     	String tipoAnimalInteresado, int animalesAdoptados){
