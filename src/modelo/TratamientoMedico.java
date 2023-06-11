@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import testMain.Utilidades;
@@ -16,7 +17,6 @@ public class TratamientoMedico implements TipoAlarma{
     private boolean estaFinalizado;
 
     public TratamientoMedico(LocalDateTime fechaFin, String desc, String nombre, int periodicidad) {
-    	this.fechaInicio = LocalDateTime.now();
     	this.fechaFin = fechaFin;
     	this.descripcion = desc;
     	this.nombre = nombre;
@@ -113,7 +113,7 @@ public class TratamientoMedico implements TipoAlarma{
 
 	@Override
 	public void enviarNotificacionPush(Alarma alarma) {
-		if(Refugio.userConectado.getClass().equals(Veterinario.class)) {
+		if(Refugio.getUserConectado().getClass().equals(Veterinario.class)) {
 			Utilidades.claseTimer(alarma, periodicidad);
 		}
 		

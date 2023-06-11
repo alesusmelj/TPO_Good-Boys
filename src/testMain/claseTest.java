@@ -62,17 +62,17 @@ public class claseTest {
 		//Agregamos un veterinario y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
 		Veterinario juan = new Veterinario("Juan","Martinez","juan2023","12345");
 		juan.setAdapter(autenticacion);
-		Utilidades.setUsuario(juan);
+		Refugio.setUsuario(juan);
 
 		//Agregamos otro veterinario y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
 		Veterinario maria = new Veterinario("Maria","Gomez","maria2023","6789");
 		maria.setAdapter(autenticacion);
-		Utilidades.setUsuario(maria);
+		Refugio.setUsuario(maria);
 
 		//Agregamos visitador y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
 		Visitador humberto = new Visitador("Humberto","Felk","humberto2023","123");
 		humberto.setAdapter(autenticacion);
-		Utilidades.setUsuario(humberto);
+		Refugio.setUsuario(humberto);
 
 		//Autenticaci�n de Veterinarios
 		juan.autenticar("juan2023","12345", juan.getTipoUsuario());
@@ -80,21 +80,21 @@ public class claseTest {
 		//Autenticacion de Visitadores
 		//Creacion de especies
 		Especie perro = new Especie("Perro",EtipoAnimal.DOMESTICO);
-		Refugio.especies.add(perro);
+		Refugio.setEspecies(perro);
 		Especie gato = new Especie("Gato",EtipoAnimal.DOMESTICO);
-		Refugio.especies.add(gato);
+		Refugio.setEspecies(gato);
 		Especie canario = new Especie("Canario",EtipoAnimal.DOMESTICO);
-		Refugio.especies.add(canario);
+		Refugio.setEspecies(canario);
 		Especie loro = new Especie("Loro",EtipoAnimal.DOMESTICO);
-		Refugio.especies.add(loro);
+		Refugio.setEspecies(loro);
 		Especie tortuga = new Especie("Tortuga",EtipoAnimal.DOMESTICO);
-		Refugio.especies.add(tortuga);
+		Refugio.setEspecies(tortuga);
 		Especie zorro = new Especie("Zorro",EtipoAnimal.SALVAJE);
-		Refugio.especies.add(zorro);
+		Refugio.setEspecies(zorro);
 		Especie pinguino = new Especie("Ping�ino",EtipoAnimal.SALVAJE);
-		Refugio.especies.add(pinguino);
+		Refugio.setEspecies(pinguino);
 		Especie halcon = new Especie("Halc�n",EtipoAnimal.SALVAJE);
-		Refugio.especies.add(halcon);
+		Refugio.setEspecies(halcon);
 		
 		//Creacion de Animal
 		Animal primerGato = new AnimalDomestico(gato,15,3,5);
@@ -127,8 +127,8 @@ public class claseTest {
 		notificador.enviar(notificacion);
 		Alarma alarma = alarmaController.crearAlarmaTratamientoMedico(animal);
 		TratamientoMedico trat = (TratamientoMedico) alarma.getTipo();
-		Utilidades.esperar(15);
-		Utilidades.timer.cancel(); // podemos usar esto cuando el veterinario pasa a finalizado un tratamiento
+//		Utilidades.esperar(15);
+//		Utilidades.timer.cancel(); // podemos usar esto cuando el veterinario pasa a finalizado un tratamiento
 //		Cliente cliente2 = clienteController.crearCliente();
 //		System.out.println(cliente2.toString());
 		

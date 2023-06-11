@@ -63,7 +63,7 @@ public class AlarmaController {
 		tratamiento.setNombre(sc.nextLine());
 		System.out.println("Por favor ingrese la descripción del tratamiento que se va a realizar");
 		tratamiento.setDescripcion(sc.nextLine());
-		System.out.println("Por favor indique la periodicidad del tratamiento. (En número entero, el valor se contará como dias, ejemplo: 2 -> Cada 2 dias");
+		System.out.println("Por favor indique la periodicidad del tratamiento. (En número entero, el valor se contará como minutos, ejemplo: 2 -> Cada 2 minutos");
 		tratamiento.setPeriodicidad(sc.nextInt());
 		System.out.println("Por favor indique las acciones a realizar. Se le solicitará el nombre de la acción y luego la descripción de la misma.");
 		System.out.println("Nombre de la acción a realizar:");
@@ -83,7 +83,9 @@ public class AlarmaController {
 			System.out.println("¿Desea agregar otra accion al tratamiento? Presione cualquier tecla para continuar, si desea dejar de añadir acciones presione N");
 			decision = sc2.nextLine();
 		}
-		System.out.println("Por favor ingrese la fecha en la que finalizará el tratamiento");
+		System.out.println("Por favor ingrese la fecha en la que iniciará el tratamiento");
+		tratamiento.setFechaInicio(Utilidades.solicitarUnaFecha());
+		System.out.println("Por último. Por favor ingrese la fecha en la que finalizará el tratamiento");
 		tratamiento.setFechaFin(Utilidades.solicitarUnaFecha());
 	}
 //	public void enviarNotificacionPush(Alarma alarma, int periodo) {

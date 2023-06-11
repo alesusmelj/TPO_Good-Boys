@@ -30,7 +30,7 @@ public class Control implements TipoAlarma{
 
 	@Override
 	public void enviarNotificacionPush(Alarma alarma) {
-		if(Refugio.userConectado.getClass().equals(Veterinario.class)) {
+		if(Refugio.getUserConectado().getClass().equals(Veterinario.class)) {
 			System.out.println(this.toString());
 		}
 	}

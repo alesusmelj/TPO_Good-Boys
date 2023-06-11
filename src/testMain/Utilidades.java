@@ -7,6 +7,7 @@ import modelo.Usuario;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Timer;
@@ -21,18 +22,6 @@ public class Utilidades {
 		int aux = nroMatricula;
 		nroMatricula++;
 		return aux;	
-	}
-
-	public static ArrayList<Usuario> getUsuarios() {
-		return Refugio.usuarios;
-	}
-
-	public static void setUsuarios(ArrayList<Usuario> usuario) {
-		Refugio.usuarios = usuario;
-	}
-
-	public static void setUsuario(Usuario usuario) {
-		Refugio.usuarios.add(usuario);
 	}
 	
 	public static void esperar(int segundos) {
@@ -57,10 +46,11 @@ public class Utilidades {
 	public static void claseTimer(Alarma alarma, int periodo) {
 		timer = new Timer();
 		long tiempoInicial = 0;
-		long periodo2 = periodo*10000;
-		long duracionTotal = 15000;
+		long periodo2 = periodo*60*1000;
+		System.out.println(periodo2);
 		TratamientoMedico tratamiento = (TratamientoMedico) alarma.getTipo();
-		boolean isFinalizado = tratamiento.isEstaFinalizado();
+		long duracionTotal = calcularDiferenciaFechas(tratamiento.getFechaInicio(),tratamiento.getFechaFin())*60*1000;
+		System.out.println(duracionTotal);
         TimerTask task = new TimerTask() {
         	long tiempoInicio = System.currentTimeMillis();
             @Override
@@ -68,13 +58,15 @@ public class Utilidades {
                 System.out.println(alarma);
                 long tiempoActual = System.currentTimeMillis();
                 long duracionTranscurrida = tiempoActual - tiempoInicio;
-                if(duracionTranscurrida >= duracionTotal || isFinalizado == true) {
-                	System.out.println(isFinalizado);
+                if(duracionTranscurrida >= duracionTotal) {
                 	cancel();
                 }
             }
         };
         timer.scheduleAtFixedRate(task, tiempoInicial, periodo2);
 	}
+    public static long calcularDiferenciaFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+        return ChronoUnit.MINUTES.between(fechaInicio, fechaFin);
+    }
 	
 }
