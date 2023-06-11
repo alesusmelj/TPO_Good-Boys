@@ -8,15 +8,16 @@ import estrategiaExportacion.IExportar;
  * 
  */
 public class FichaTecnica {
+	
+    private Animal animal;
+    private ArrayList<TratamientoMedico> tratamiento;
+    private ArrayList<Control> controles;
 
     public FichaTecnica(Animal animal) {
     	this.animal = animal;
-    	
+    	this.tratamiento = new ArrayList();
+    	this.controles = new ArrayList();
     }
-
-    private Animal animal;
-    private List<TratamientoMedico> tratamiento;
-    private List<Control> controles;
     
     public void agregarTratamiento(TratamientoMedico tratamientoMedico) {
     	this.tratamiento.add(tratamientoMedico);

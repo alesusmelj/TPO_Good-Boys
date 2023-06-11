@@ -3,6 +3,7 @@ package testMain;
 import adapterAutentificador.Autenticador;
 import adapterAutentificador.IAdapterAutenticador;
 import controllers.AdopcionController;
+import controllers.AlarmaController;
 import controllers.AnimalController;
 import controllers.ClienteController;
 import estrategiaAdapterNotificacion.AdapterEmail;
@@ -17,6 +18,7 @@ import estrategiaExportacion.AdapterPDF;
 import estrategiaExportacion.ExportarExcel;
 import estrategiaExportacion.ExportarPDF;
 import estrategiaExportacion.IExportar;
+import modelo.Alarma;
 import modelo.Animal;
 import modelo.AnimalDomestico;
 import modelo.CadenciaVisitas;
@@ -29,6 +31,7 @@ import modelo.Exportador;
 import modelo.Notificacion;
 import modelo.Notificador;
 import modelo.Refugio;
+import modelo.TratamientoMedico;
 import modelo.Veterinario;
 import modelo.Visitador;
 
@@ -40,6 +43,7 @@ public class claseTest {
 		ClienteController clienteController = new ClienteController();
 		AnimalController animalController = new AnimalController();
 		AdopcionController adopcionController = new AdopcionController();
+		AlarmaController alarmaController = new AlarmaController();
 
 		//---Notificador---
 		Notificador notificador = new Notificador();
@@ -72,10 +76,8 @@ public class claseTest {
 
 		//Autenticaci�n de Veterinarios
 		juan.autenticar("juan2023","12345", juan.getTipoUsuario());
-		
+		System.out.println(Refugio.getUserConectado());
 		//Autenticacion de Visitadores
-		
-		
 		//Creacion de especies
 		Especie perro = new Especie("Perro",EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(perro);
@@ -123,6 +125,10 @@ public class claseTest {
 		}
 		System.out.println(notificacion.toString());
 		notificador.enviar(notificacion);
+		Alarma alarma = alarmaController.crearAlarmaTratamientoMedico(animal);
+		TratamientoMedico trat = (TratamientoMedico) alarma.getTipo();
+		Utilidades.esperar(15);
+		Utilidades.timer.cancel(); // podemos usar esto cuando el veterinario pasa a finalizado un tratamiento
 //		Cliente cliente2 = clienteController.crearCliente();
 //		System.out.println(cliente2.toString());
 		

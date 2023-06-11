@@ -5,11 +5,12 @@ import java.util.*;
 
 public class Control implements TipoAlarma{
 
-    private List<Accion> accionesARealizar;
+    private ArrayList<Accion> accionesARealizar;
     private LocalDateTime fecha;
     
     public Control() {
     	this.fecha = LocalDateTime.now();
+    	this.accionesARealizar = new ArrayList();
     }
     
 	@Override
@@ -21,5 +22,19 @@ public class Control implements TipoAlarma{
 	public void agregarAccion (Accion accion) {
 		this.accionesARealizar.add(accion);
 	}
+
+	@Override
+	public String toString() {
+		return "Control [accionesARealizar=" + accionesARealizar + ", fecha=" + fecha + "]";
+	}
+
+	@Override
+	public void enviarNotificacionPush(Alarma alarma) {
+		if(Refugio.userConectado.getClass().equals(Veterinario.class)) {
+			System.out.println(this.toString());
+		}
+	}
+	
+	
 
 }

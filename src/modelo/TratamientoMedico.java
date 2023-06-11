@@ -1,28 +1,32 @@
 package modelo;
 
+import java.time.LocalDateTime;
 import java.util.*;
+
+import testMain.Utilidades;
 
 public class TratamientoMedico implements TipoAlarma{
 
-    private Date fechaInicio;
-    private Date fechaFin;
-    private List<Accion> acciones;
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaFin;
+    private ArrayList<Accion> acciones;
     private String descripcion;
     private String nombre;
     private int periodicidad;
     private boolean estaFinalizado;
 
-    public TratamientoMedico(Date fechaInicio, Date fechaFin, String desc, String nombre, int periodicidad) {
-    	this.fechaInicio = fechaInicio;
+    public TratamientoMedico(LocalDateTime fechaFin, String desc, String nombre, int periodicidad) {
+    	this.fechaInicio = LocalDateTime.now();
     	this.fechaFin = fechaFin;
     	this.descripcion = desc;
     	this.nombre = nombre;
     	this.periodicidad = periodicidad;
     	this.estaFinalizado = false;
+    	this.acciones = new ArrayList();
     }
     
     public TratamientoMedico() {
-		// TODO Auto-generated constructor stub
+		this.acciones = new ArrayList();
 	}
 
 	public void marcarFinalizado() {
@@ -44,19 +48,19 @@ public class TratamientoMedico implements TipoAlarma{
 		return alarma;
 	}
 
-	public Date getFechaInicio() {
+	public LocalDateTime getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(LocalDateTime fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFechaFin() {
+	public LocalDateTime getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(LocalDateTime fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
@@ -64,7 +68,7 @@ public class TratamientoMedico implements TipoAlarma{
 		return acciones;
 	}
 
-	public void setAcciones(List<Accion> acciones) {
+	public void setAcciones(ArrayList<Accion> acciones) {
 		this.acciones = acciones;
 	}
 
@@ -99,5 +103,22 @@ public class TratamientoMedico implements TipoAlarma{
 	public void setEstaFinalizado(boolean estaFinalizado) {
 		this.estaFinalizado = estaFinalizado;
 	}
+
+	@Override
+	public String toString() {
+		return "TratamientoMedico [fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", acciones=" + acciones
+				+ ", descripcion=" + descripcion + ", nombre=" + nombre + ", periodicidad=" + periodicidad
+				+ ", estaFinalizado=" + estaFinalizado + "]";
+	}
+
+	@Override
+	public void enviarNotificacionPush(Alarma alarma) {
+		if(Refugio.userConectado.getClass().equals(Veterinario.class)) {
+			Utilidades.claseTimer(alarma, periodicidad);
+		}
+		
+	}
+	
+	
 
 }
