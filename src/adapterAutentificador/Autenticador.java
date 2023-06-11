@@ -2,6 +2,7 @@ package adapterAutentificador;
 
 import java.util.*;
 import modelo.EtipoUsuario;
+import modelo.Refugio;
 import modelo.Usuario;
 import testMain.Utilidades;
 
@@ -29,6 +30,7 @@ public class Autenticador implements IAdapterAutenticador {
 							System.out.println("El usuario: " + usuario + " (" + tipoUsuario + ")" + " ha iniciado sesión correctamente.");
 							System.out.println();
 							u.setAutenticado(true);
+							Refugio.setUserConectado(u);
 							iniciadoAux = true;
 						}
 

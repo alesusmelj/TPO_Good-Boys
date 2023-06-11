@@ -3,6 +3,7 @@ package testMain;
 import adapterAutentificador.Autenticador;
 import adapterAutentificador.IAdapterAutenticador;
 import controllers.AdopcionController;
+import controllers.AlarmaController;
 import controllers.AnimalController;
 import controllers.ClienteController;
 import estrategiaAdapterNotificacion.AdapterEmail;
@@ -17,6 +18,7 @@ import estrategiaExportacion.AdapterPDF;
 import estrategiaExportacion.ExportarExcel;
 import estrategiaExportacion.ExportarPDF;
 import estrategiaExportacion.IExportar;
+import modelo.Alarma;
 import modelo.Animal;
 import modelo.AnimalDomestico;
 import modelo.AnimalSalvaje;
@@ -30,6 +32,7 @@ import modelo.Exportador;
 import modelo.Notificacion;
 import modelo.Notificador;
 import modelo.Refugio;
+import modelo.TratamientoMedico;
 import modelo.Veterinario;
 import modelo.Visitador;
 
@@ -41,6 +44,7 @@ public class claseTest {
 		ClienteController clienteController = new ClienteController();
 		AnimalController animalController = new AnimalController();
 		AdopcionController adopcionController = new AdopcionController();
+		AlarmaController alarmaController = new AlarmaController();
 
 		//---Notificador---
 		Notificador notificador = new Notificador();
@@ -71,47 +75,44 @@ public class claseTest {
 		humberto.setAdapter(autenticacion);
 		Utilidades.setUsuario(humberto);
 
-		//Autenticación de Veterinarios
+		//Autenticaci�n de Veterinarios
 		juan.autenticar("juan2023","12345", juan.getTipoUsuario());
-		
+		System.out.println(Refugio.getUserConectado());
 		//Autenticacion de Visitadores
-		humberto.autenticar("humberto2023", "123", humberto.getTipoUsuario());
-		
 		//Creacion de especies
-		Especie perro = new Especie("Perro", EtipoAnimal.DOMESTICO);
+		Especie perro = new Especie("Perro",EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(perro);
-		Especie gato = new Especie("Gato", EtipoAnimal.DOMESTICO);
+		Especie gato = new Especie("Gato",EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(gato);
-		Especie canario = new Especie("Canario", EtipoAnimal.DOMESTICO);
+		Especie canario = new Especie("Canario",EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(canario);
-		Especie loro = new Especie("Loro", EtipoAnimal.DOMESTICO);
+		Especie loro = new Especie("Loro",EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(loro);
-		Especie tortuga = new Especie("Tortuga", EtipoAnimal.DOMESTICO);
+		Especie tortuga = new Especie("Tortuga",EtipoAnimal.DOMESTICO);
 		Refugio.especies.add(tortuga);
-		Especie zorro = new Especie("Zorro", EtipoAnimal.SALVAJE);
+		Especie zorro = new Especie("Zorro",EtipoAnimal.SALVAJE);
 		Refugio.especies.add(zorro);
-		Especie pinguino = new Especie("Pinguino", EtipoAnimal.SALVAJE);
+		Especie pinguino = new Especie("Ping�ino",EtipoAnimal.SALVAJE);
 		Refugio.especies.add(pinguino);
-		Especie halcon = new Especie("Halcón", EtipoAnimal.SALVAJE);
+		Especie halcon = new Especie("Halc�n",EtipoAnimal.SALVAJE);
 		Refugio.especies.add(halcon);
 		
 		//Creacion de Animal
 		Animal primerGato = new AnimalDomestico(gato,15,3,5);
 		Utilidades.esperar(2);
-		System.out.println("Acaba de ingresar un animal al refugio.");
+		System.out.println("Acaba de ingresar un animal al refugio");
 		System.out.println(primerGato.toString());
 
 		Animal primerZorro = new AnimalSalvaje(zorro, 15, 5, 3);
 		Utilidades.esperar(2);
 		System.out.println("Acaba de ingresar un animal al refugio.");
 		System.out.println(primerZorro.toString());
-
+		
 		//Creacion de Cliente
-		Cliente pablo = new Cliente("Pablo","Diaz","Soltero","pablodiaz@gmail.com","12345","Empleado",false,"Quiero adoptar","Gato",0);
+		Cliente pablo = new Cliente("pablo","diaz","soltero","pablodiaz@gmail.com","12345","empleado",false,"quiero adoptar","Gato",0);
 		Utilidades.esperar(2);
-		System.out.println("Acaba de ingresar un cliente al refugio interesado por adoptar un animal.");
+		System.out.println("Acaba de ingresar un cliente al refugio interesado por adoptar un animal");
 		Utilidades.esperar(2);
-
 		//pablo.solicitarAdopcion(primerGato,humberto,new CadenciaVisitas(EDiaVisita.LUNES),EpreferenciaRecordatorio.SMS);
 		
 		System.out.println();
@@ -139,6 +140,10 @@ public class claseTest {
 		}
 		System.out.println(notificacion.toString());
 		notificador.enviar(notificacion);
+		Alarma alarma = alarmaController.crearAlarmaTratamientoMedico(animal);
+		TratamientoMedico trat = (TratamientoMedico) alarma.getTipo();
+		Utilidades.esperar(15);
+		Utilidades.timer.cancel(); // podemos usar esto cuando el veterinario pasa a finalizado un tratamiento
 //		Cliente cliente2 = clienteController.crearCliente();
 //		System.out.println(cliente2.toString());
 		

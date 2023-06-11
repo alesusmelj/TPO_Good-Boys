@@ -5,7 +5,6 @@ import java.util.*;
 public class Alarma {
 
     private TipoAlarma tipo;
-    private NotificacionPush notificacionPush;
     
     public Alarma(TipoAlarma tipoAlarma) {
     	this.tipo = tipoAlarma;
@@ -14,21 +13,30 @@ public class Alarma {
     public void atender() {
     }
 
-    public void enviar() {
-    	
-    }
-
     public void programarAlarma() {
     }
 
     public void modificarAlarma() {
     }
-    
-    public void crearAlarma() {
-    	this.tipo.crearAlarma();
-    }
 
 	public Alarma() {
+	}
+
+	@Override
+	public String toString() {
+		return "Alarma: " + tipo;
+	}
+	
+	public void enviarNotificacionPush() {
+		this.tipo.enviarNotificacionPush(this);
+	}
+
+	public TipoAlarma getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoAlarma tipo) {
+		this.tipo = tipo;
 	}
 
 }

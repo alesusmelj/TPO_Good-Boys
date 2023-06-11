@@ -4,6 +4,7 @@ import java.util.*;
 
 public interface TipoAlarma {
 
-    public void crearAlarma();
+    public Alarma crearAlarma(TipoAlarma tipo);
+    public void enviarNotificacionPush(Alarma alarma);
 
 }
