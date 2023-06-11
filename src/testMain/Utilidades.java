@@ -68,5 +68,4 @@ public class Utilidades {
     public static long calcularDiferenciaFechas(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
         return ChronoUnit.MINUTES.between(fechaInicio, fechaFin);
     }
-	
 }

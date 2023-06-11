@@ -1,7 +1,6 @@
 package modelo;
 
 import java.util.*;
-
 import estadoCondicionMedica.Enfermo;
 import estadoCondicionMedica.EstadoCondicionMedica;
 import estadoCondicionMedica.Saludable;
@@ -16,7 +15,6 @@ public abstract class Animal implements EstadoCondicionMedica{
     protected FichaTecnica fichaTecnica;
     
     public Animal() {
-    	
     }
 
     public Animal(Especie especie, double altura, double peso, double edadAproximada) {
@@ -27,21 +25,14 @@ public abstract class Animal implements EstadoCondicionMedica{
         this.estado = new Enfermo();
     }
 
-    public boolean esAdoptable() {
-        // TODO implement here
-        return false;
-    }
-    public void recuperar() {
+    public abstract boolean esAdoptable();
 
-    }
-    public void serAdoptado() {
+    public void recuperar(Animal animal){}
+    
+    public void serAdoptado(Animal animal){}
 
-    }
-
-    @Override
     public String toString() {
-        return  especie + " altura: " + altura + "cm, peso: " + peso + "kg, edad aproximada: "
-                + edadAproximada + " años ";
+        return  especie + " altura: " + altura + "cm, peso: " + peso + "kg, edad aproximada: " + edadAproximada + " aÃ±os " + "\n";
     }
 
     public Especie getEspecie() {
@@ -52,7 +43,7 @@ public abstract class Animal implements EstadoCondicionMedica{
         return estado;
     }
 
-    public void setEstado(EstadoCondicionMedica estado) {
+    public void cambiarEstado(EstadoCondicionMedica estado) {
         this.estado = estado;
     }
 
@@ -91,5 +82,4 @@ public abstract class Animal implements EstadoCondicionMedica{
 	public FichaTecnica getFichaTecnica() {
 		return fichaTecnica;
 	}
-	
 }

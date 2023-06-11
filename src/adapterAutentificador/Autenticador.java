@@ -28,6 +28,7 @@ public class Autenticador implements IAdapterAutenticador {
 						if(u.isAutenticado() == false) {
 							
 							System.out.println("El usuario: " + usuario + " (" + tipoUsuario + ")" + " ha iniciado sesión correctamente.");
+							System.out.println();
 							u.setAutenticado(true);
 							Refugio.setUserConectado(u);
 							iniciadoAux = true;
@@ -45,6 +46,7 @@ public class Autenticador implements IAdapterAutenticador {
 
 				else if(u.isAutenticado() == true) {
 					System.out.println("No es posible iniciar sesión, ya hay una sesión activa.");
+					System.out.println();
 					iniciadoAux = true;
 				}
 			}
