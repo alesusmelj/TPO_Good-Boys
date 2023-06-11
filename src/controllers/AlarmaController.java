@@ -3,6 +3,8 @@ package controllers;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
+import estadoCondicionMedica.Enfermo;
+import estadoCondicionMedica.Saludable;
 import modelo.Accion;
 import modelo.Alarma;
 import modelo.Animal;
@@ -92,19 +94,17 @@ public class AlarmaController {
 		tratamiento.setFechaFin(Utilidades.solicitarUnaFecha());
 	}
 	
-	public void atenderAlarma(Veterinario veterinario) {
-		
-	}
-	
-	public void atenderControl(Veterinario veterinario, Control control) {
+	public void atenderControl(Veterinario veterinario, Control control, Animal animal) {
 		control.setVeterinario(veterinario);
 		control.marcarFinalizado();
 		Scanner sc = new Scanner(System.in);
+		consultarEstadoAnimal(animal);
 		System.out.println("Ingrese a modo de comentario lo realizado en el segumiento del tratamiento:");
 		control.setComentario(sc.nextLine());
+		Refugio.getAlarmas().remove(control);
 	}
 
-	public void atenderTratamientoMedico(Veterinario veterinario, TratamientoMedico tratamientoMedico) {
+	public void atenderTratamientoMedico(Veterinario veterinario, TratamientoMedico tratamientoMedico, Animal animal) {
 		SeguimientoTratamiento seguimientoTratamiento = new SeguimientoTratamiento();
 		tratamientoMedico.setVeterinario(veterinario);
 		Scanner sc = new Scanner(System.in);
@@ -120,9 +120,35 @@ public class AlarmaController {
 		}
 		seguimientoTratamiento.setVeterinario(veterinario);
 		seguimientoTratamiento.setFecha(LocalDateTime.now());
+		consultarEstadoAnimal(animal);
 		System.out.println("Ingrese a modo de comentario lo realizado en el segumiento del tratamiento:");
 		seguimientoTratamiento.setComentario(sc.nextLine());
 		seguimientoTratamiento.setTratamiento(tratamientoMedico);
 		tratamientoMedico.setSeguimientosTratamiento(seguimientoTratamiento);
+	}
+	
+	public void consultarEstadoAnimal (Animal animal) {
+		Scanner sc = new Scanner(System.in);
+		if(animal.getEstado().equals(Enfermo.class)) {
+			System.out.println("El animal ya se encuentra saludable? (S/N)");
+			String respuesta = sc.nextLine();
+			while ((!respuesta.toUpperCase().equals("S")) && (!respuesta.toUpperCase().equals("N"))) {
+				System.out.println("Error. El animal ya se encuentra saludable? (S/N)");
+				respuesta = sc.nextLine();
+			}
+			if(respuesta.toUpperCase().equals("S")) {
+				animal.cambiarEstado(new Saludable());
+			}
+		}else if(animal.getEstado().equals(Saludable.class)) {
+			System.out.println("El animal tiene algun problema de salud? (S/N)");
+			String respuesta = sc.nextLine();
+			while ((!respuesta.toUpperCase().equals("S")) && (!respuesta.toUpperCase().equals("N"))) {
+				System.out.println("Error. El animal tiene algun problema de salud? (S/N)");
+				respuesta = sc.nextLine();
+			}
+			if(respuesta.toUpperCase().equals("S")) {
+				animal.cambiarEstado(new Enfermo());
+			}
+		}
 	}
 }
