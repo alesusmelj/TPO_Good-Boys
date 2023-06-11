@@ -6,8 +6,7 @@ public class Saludable implements EstadoCondicionMedica {
 
     public void recuperar(Animal animal) {
         System.out.println("El animal esta sano.");
-        animal.setSaludable(true);
-    }
+        }
 
     public void serAdoptado(Animal animal) {
         if(animal.esAdoptable()) {

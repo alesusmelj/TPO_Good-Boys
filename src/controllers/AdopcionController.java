@@ -19,7 +19,7 @@ public class AdopcionController {
 			cliente.setAnimalesAdoptados(cliente.getAnimalesAdoptados() + 1);
 			Adopcion adopcion = new Adopcion(cliente, animal, seguimiento);
 			System.out.println(animal + "Adoptado correctamente");
-			Refugio.adopciones.add(adopcion);
+			Refugio.setAdopciones(adopcion);
 		}
 		else if(!cliente.puedeAdoptar()) {
 			System.out.println("El cliente " + cliente.getNombre() + "ya posee mas de 2 mascotas");

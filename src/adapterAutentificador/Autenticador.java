@@ -18,7 +18,7 @@ public class Autenticador implements IAdapterAutenticador {
     	System.out.println("Iniciando sesión...");
     	Utilidades.esperar(1);
 
-    	for(Usuario u:Utilidades.getUsuarios()) {
+    	for(Usuario u:Refugio.getUsuarios()) {
     		contadorAux++;
 
 			if(iniciadoAux == false) {
@@ -39,7 +39,7 @@ public class Autenticador implements IAdapterAutenticador {
 						}
 					}
 
-					else if(Utilidades.getUsuarios().size() == contadorAux && u.isAutenticado() == false) {
+					else if(Refugio.getUsuarios().size() == contadorAux && u.isAutenticado() == false) {
 						System.out.println("El usuario o la contraseña es incorrecta.");
 					}
 				}

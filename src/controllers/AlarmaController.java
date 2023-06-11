@@ -1,13 +1,16 @@
 package controllers;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 import modelo.Accion;
 import modelo.Alarma;
 import modelo.Animal;
 import modelo.Control;
+import modelo.Refugio;
 import modelo.SeguimientoTratamiento;
 import modelo.TratamientoMedico;
+import modelo.Veterinario;
 import testMain.Utilidades;
 
 public class AlarmaController {
@@ -17,76 +20,109 @@ public class AlarmaController {
 		Alarma alarma = control.crearAlarma(control);
 		System.out.println("Se ha creado una nueva alarma de control");
 		configuracionAlarmaControl(control,animal);
+		Refugio.setAlarma(alarma);
 		alarma.enviarNotificacionPush();
 		return alarma;
 	}
 
 	public Alarma crearAlarmaTratamientoMedico(Animal animal) {
-		SeguimientoTratamiento seguimientoTratamiento = new SeguimientoTratamiento();
 		TratamientoMedico tratamiento = new TratamientoMedico();
-		seguimientoTratamiento.setTratamiento(tratamiento);
 		Alarma alarma = tratamiento.crearAlarma(tratamiento);
 		System.out.println("Se ha creado una nueva alarma de tratamiento medico");
 		configuracionAlarmaTratamiento(tratamiento, animal);
+		Refugio.setAlarma(alarma);
 		alarma.enviarNotificacionPush();
 		return alarma;
 	}
 
 	public void configuracionAlarmaControl(Control control,Animal animal) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Configuraciï¿½n de alarma de contro para el animal: "+animal);
+		System.out.println("Configuración de alarma de contro para el animal: "+animal);
 		animal.getFichaTecnica().agregarControl(control);
-		System.out.println("Por favor indique las acciones a realizar. Se le solicitarï¿½ el nombre de la acciï¿½n y luego la descripciï¿½n de la misma.");
-		System.out.println("Nombre de la acciï¿½n a realizar:");
+		System.out.println("Por favor indique las acciones a realizar. Se le solicitará el nombre de la acción y luego la descripción de la misma.");
+		System.out.println("Nombre de la acción a realizar:");
 		String accion = sc.nextLine();
-		System.out.println("Descripciï¿½n de la acciï¿½n a realizar:");
+		System.out.println("Descripción de la acción a realizar:");
 		String descripcion = sc.nextLine();
 		control.agregarAccion(new Accion(accion,descripcion));
-		System.out.println("ï¿½Desea agregar otra accion al control? Presione cualquier tecla para continuar, si desea dejar de aï¿½adir acciones presione N");
+		System.out.println("¿Desea agregar otra accion al control? Presione cualquier tecla para continuar, si desea dejar de añadir acciones presione N");
 		String decision = sc.nextLine();
 		while(!decision.toUpperCase().equals("N")) {
-			System.out.println("Nombre de la acciï¿½n a realizar:");
+			System.out.println("Nombre de la acción a realizar:");
 			accion = sc.nextLine();
-			System.out.println("Descripciï¿½n de la acciï¿½n a realizar:");
+			System.out.println("Descripción de la acción a realizar:");
 			descripcion = sc.nextLine();
 			control.agregarAccion(new Accion(accion,descripcion));
-			System.out.println("ï¿½Desea agregar otra accion al control? Presione cualquier tecla para continuar, si desea dejar de aï¿½adir acciones presione N");
+			System.out.println("¿Desea agregar otra accion al control? Presione cualquier tecla para continuar, si desea dejar de añadir acciones presione N");
 			decision = sc.nextLine();
 		}
 	}
 
 	public void configuracionAlarmaTratamiento(TratamientoMedico tratamiento,Animal animal) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Configuraciï¿½n de alarma de tratamiento para el animal: "+animal);
+		System.out.println("Configuración de alarma de tratamiento para el animal: "+animal);
 		animal.getFichaTecnica().agregarTratamiento(tratamiento);
 		System.out.println("Por favor ingrese el nombre del tratamiento que se va a realizar");
 		tratamiento.setNombre(sc.nextLine());
-		System.out.println("Por favor ingrese la descripciï¿½n del tratamiento que se va a realizar");
+		System.out.println("Por favor ingrese la descripción del tratamiento que se va a realizar");
 		tratamiento.setDescripcion(sc.nextLine());
-		System.out.println("Por favor indique la periodicidad del tratamiento. (En nï¿½mero entero, el valor se contarï¿½ como dias, ejemplo: 2 -> Cada 2 dias");
+		System.out.println("Por favor indique la periodicidad del tratamiento. (En número entero, el valor se contará como minutos, ejemplo: 2 -> Cada 2 minutos");
 		tratamiento.setPeriodicidad(sc.nextInt());
-		System.out.println("Por favor indique las acciones a realizar. Se le solicitarï¿½ el nombre de la acciï¿½n y luego la descripciï¿½n de la misma.");
-		System.out.println("Nombre de la acciï¿½n a realizar:");
+		System.out.println("Por favor indique las acciones a realizar. Se le solicitará el nombre de la acción y luego la descripción de la misma.");
+		System.out.println("Nombre de la acción a realizar:");
 		Scanner sc2 = new Scanner(System.in);
 		String accion = sc2.nextLine();
-		System.out.println("Descripciï¿½n de la acciï¿½n a realizar:");
+		System.out.println("Descripción de la acción a realizar:");
 		String descripcion = sc2.nextLine();
 		tratamiento.agregarAccion(new Accion(accion,descripcion));
-		System.out.println("ï¿½Desea agregar otra accion al tratamiento? Presione cualquier tecla para continuar, si desea dejar de aï¿½adir acciones presione N");
+		System.out.println("¿Desea agregar otra accion al tratamiento? Presione cualquier tecla para continuar, si desea dejar de añadir acciones presione N");
 		String decision = sc2.nextLine();
 		while((!decision.toUpperCase().equals("N"))) {
-			System.out.println("Nombre de la acciï¿½n a realizar:");
+			System.out.println("Nombre de la acción a realizar:");
 			accion = sc2.nextLine();
-			System.out.println("Descripciï¿½n de la acciï¿½n a realizar:");
+			System.out.println("Descripción de la acción a realizar:");
 			descripcion = sc2.nextLine();
 			tratamiento.agregarAccion(new Accion(accion,descripcion));
-			System.out.println("ï¿½Desea agregar otra accion al tratamiento? Presione cualquier tecla para continuar, si desea dejar de aï¿½adir acciones presione N");
+			System.out.println("¿Desea agregar otra accion al tratamiento? Presione cualquier tecla para continuar, si desea dejar de añadir acciones presione N");
 			decision = sc2.nextLine();
 		}
-		System.out.println("Por favor ingrese la fecha en la que finalizarï¿½ el tratamiento");
+		System.out.println("Por favor ingrese la fecha en la que iniciará el tratamiento");
+		tratamiento.setFechaInicio(Utilidades.solicitarUnaFecha());
+		System.out.println("Por último. Por favor ingrese la fecha en la que finalizará el tratamiento");
 		tratamiento.setFechaFin(Utilidades.solicitarUnaFecha());
 	}
-//	public void enviarNotificacionPush(Alarma alarma, int periodo) {
-//		Utilidades.claseTimer(alarma, periodo);
-//	}
+	
+	public void atenderAlarma(Veterinario veterinario) {
+		
+	}
+	
+	public void atenderControl(Veterinario veterinario, Control control) {
+		control.setVeterinario(veterinario);
+		control.marcarFinalizado();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Ingrese a modo de comentario lo realizado en el segumiento del tratamiento:");
+		control.setComentario(sc.nextLine());
+	}
+
+	public void atenderTratamientoMedico(Veterinario veterinario, TratamientoMedico tratamientoMedico) {
+		SeguimientoTratamiento seguimientoTratamiento = new SeguimientoTratamiento();
+		tratamientoMedico.setVeterinario(veterinario);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Desea finalizar el tratamiento: "+ tratamientoMedico + "? (S/N)");
+		String respuesta = sc.nextLine();
+		while ((!respuesta.toUpperCase().equals("S")) && (!respuesta.toUpperCase().equals("N"))) {
+			System.out.println("Error. Desea finalizar el tratamiento: "+ tratamientoMedico + "? (S/N)");
+			respuesta = sc.nextLine();
+		}
+		if (respuesta.toUpperCase().equals("S")) {
+			tratamientoMedico.marcarFinalizado();
+			Refugio.getAlarmas().remove(tratamientoMedico);
+		}
+		seguimientoTratamiento.setVeterinario(veterinario);
+		seguimientoTratamiento.setFecha(LocalDateTime.now());
+		System.out.println("Ingrese a modo de comentario lo realizado en el segumiento del tratamiento:");
+		seguimientoTratamiento.setComentario(sc.nextLine());
+		seguimientoTratamiento.setTratamiento(tratamientoMedico);
+		tratamientoMedico.setSeguimientosTratamiento(seguimientoTratamiento);
+	}
 }

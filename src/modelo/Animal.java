@@ -12,7 +12,6 @@ public abstract class Animal implements EstadoCondicionMedica{
     protected double altura;
     protected double peso;
     protected double edadAproximada;
-    protected boolean isSaludable;
     protected FichaTecnica fichaTecnica;
     
     public Animal() {
@@ -23,7 +22,6 @@ public abstract class Animal implements EstadoCondicionMedica{
         this.altura = altura;
         this.peso = peso;
         this.edadAproximada = edadAproximada;
-        this.isSaludable = false;
         this.estado = new Enfermo();
     }
 
@@ -39,14 +37,6 @@ public abstract class Animal implements EstadoCondicionMedica{
 
     public Especie getEspecie() {
         return especie;
-    }
-
-    public boolean isSaludable() {
-        return isSaludable;
-    }
-
-    public void setSaludable(boolean isSaludable) {
-        this.isSaludable = isSaludable;
     }
 
     public EstadoCondicionMedica getEstado() {
