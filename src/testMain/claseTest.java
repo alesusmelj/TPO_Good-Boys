@@ -39,6 +39,20 @@ public class claseTest {
 
 	public static void main(String[] args) {
 
+		Mock mock = new Mock();
+		mock.ingresoMock();
+		Animal primerGato = mock.primerGato;
+		Animal primerZorro = mock.primerZorro;
+		Animal primerTortuga = mock.primerTortuga;
+		Animal primerHalcon = mock.primerHalcon;
+		Veterinario juan = mock.juan;
+		Veterinario maria = mock.maria;
+		Visitador humberto = mock.humberto;
+		Visitador pedro = mock.pedro;
+		Cliente pablo = mock.pablo;
+		Cliente matias = mock.matias;
+		Cliente claudio = mock.claudio;
+
 		//--Controladores--
 		ClienteController clienteController = new ClienteController();
 		AnimalController animalController = new AnimalController();
@@ -56,56 +70,10 @@ public class claseTest {
 		IExportar exportarPDF = new ExportarPDF(new AdapterPDF());
 		IExportar exportarExcel = new ExportarExcel(new AdapterExcel());
 
-		//----Autenticador----
-		IAdapterAutenticador autenticacion = new Autenticador();
-
-		//Agregamos un veterinario y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
-		Veterinario juan = new Veterinario("Juan","Martinez","juan2023","12345");
-		juan.setAdapter(autenticacion);
-		Refugio.setUsuario(juan);
-
-		//Agregamos otro veterinario y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
-		Veterinario maria = new Veterinario("Maria","Gomez","maria2023","6789");
-		maria.setAdapter(autenticacion);
-		Refugio.setUsuario(maria);
-
-		//Agregamos visitador y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
-		Visitador humberto = new Visitador("Humberto","Felk","humberto2023","123");
-		humberto.setAdapter(autenticacion);
-		Refugio.setUsuario(humberto);
-
-		//Autenticaci�n de Veterinarios
+		//Autenticación de Veterinarios
 		juan.autenticar("juan2023","12345", juan.getTipoUsuario());
 		System.out.println(Refugio.getUserConectado());
-		//Autenticacion de Visitadores
-		//Creacion de especies
-		Especie perro = new Especie("Perro",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(perro);
-		Especie gato = new Especie("Gato",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(gato);
-		Especie canario = new Especie("Canario",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(canario);
-		Especie loro = new Especie("Loro",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(loro);
-		Especie tortuga = new Especie("Tortuga",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(tortuga);
-		Especie zorro = new Especie("Zorro",EtipoAnimal.SALVAJE);
-		Refugio.setEspecies(zorro);
-		Especie pinguino = new Especie("Ping�ino",EtipoAnimal.SALVAJE);
-		Refugio.setEspecies(pinguino);
-		Especie halcon = new Especie("Halc�n",EtipoAnimal.SALVAJE);
-		Refugio.setEspecies(halcon);
-		
-		//Creacion de Animal
-		Animal primerGato = new AnimalDomestico(gato,15,3,5);
-		Utilidades.esperar(2);
-		System.out.println("Acaba de ingresar un animal al refugio");
-		System.out.println(primerGato.toString());
-		//Creacion de Cliente
-		Cliente pablo = new Cliente("pablo","diaz","soltero","pablodiaz@gmail.com","12345","empleado",false,"quiero adoptar","Gato",0);
-		Utilidades.esperar(2);
-		System.out.println("Acaba de ingresar un cliente al refugio interesado por adoptar un animal");
-		Utilidades.esperar(2);
+
 		//pablo.solicitarAdopcion(primerGato,humberto,new CadenciaVisitas(EDiaVisita.LUNES),EpreferenciaRecordatorio.SMS);
 		
 		primerGato.recuperar(primerGato);
