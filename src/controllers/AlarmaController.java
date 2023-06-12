@@ -20,20 +20,20 @@ public class AlarmaController {
 	public Alarma crearAlarmaControl(Animal animal) {
 		Control control = new Control();
 		Alarma alarma = control.crearAlarma(control);
-		System.out.println("Se ha creado una nueva alarma de control");
 		configuracionAlarmaControl(control,animal);
 		Refugio.setAlarma(alarma);
 		alarma.enviarNotificacionPush();
+		System.out.println("Se ha creado una nueva alarma de control");
 		return alarma;
 	}
 
 	public Alarma crearAlarmaTratamientoMedico(Animal animal) {
 		TratamientoMedico tratamiento = new TratamientoMedico();
 		Alarma alarma = tratamiento.crearAlarma(tratamiento);
-		System.out.println("Se ha creado una nueva alarma de tratamiento medico");
 		configuracionAlarmaTratamiento(tratamiento, animal);
 		Refugio.setAlarma(alarma);
 		alarma.enviarNotificacionPush();
+		System.out.println("Se ha creado una nueva alarma de tratamiento medico");
 		return alarma;
 	}
 
@@ -90,7 +90,7 @@ public class AlarmaController {
 		}
 		System.out.println("Por favor ingrese la fecha en la que iniciará el tratamiento");
 		tratamiento.setFechaInicio(Utilidades.solicitarUnaFecha());
-		System.out.println("Por último. Por favor ingrese la fecha en la que finalizará el tratamiento");
+		System.out.println("Por ultimo. Por favor ingrese la fecha en la que finalizará el tratamiento");
 		tratamiento.setFechaFin(Utilidades.solicitarUnaFecha());
 	}
 	

@@ -36,18 +36,6 @@ public class Cliente {
     	this.animalesAdoptados = animalesAdoptados;
     }
 
-
-    public boolean solicitarAdopcion(Animal animal,Visitador visitador, CadenciaVisitas cadencia,EpreferenciaRecordatorio preferenciaRecordatorio) {
-    	if(animal.esAdoptable() && this.puedeAdoptar()) {
-    		Seguimiento seguimiento= new Seguimiento(visitador,cadencia);
-    		this.preferenciaRecordatorio = preferenciaRecordatorio;
-    		System.out.println("El animal "+animal.getEspecie()+" ha sido adoptado por: "+this.nombre+" "+this.apellido);
-    		return true;
-    	}
-    	System.out.println(this.nombre+" "+this.apellido+" no pudo adoptar al animal "+animal.getEspecie());
-    	return false;
-    }
-
     public boolean puedeAdoptar() {
     	if(animalesAdoptados >= 2) {
     		return false;

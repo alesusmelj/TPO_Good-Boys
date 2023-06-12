@@ -3,6 +3,7 @@ package estrategiaAdapterNotificacion;
 import java.util.*;
 
 import modelo.Notificacion;
+import modelo.Visita;
 
  
 public class NotificacionPorWhatsApp implements EstrategiaDeNotificacion {
@@ -12,8 +13,8 @@ public class NotificacionPorWhatsApp implements EstrategiaDeNotificacion {
         this.adapter = adapter;
     }
 
-    public void enviar(Notificacion notificacion) {
-    	this.adapter.enviarWhatsApp(notificacion);
+    public void enviar(Notificacion notificacion, Visita visita) {
+    	this.adapter.enviarWhatsApp(notificacion, visita);
     }
 
 	public void setAdapter(AdapterNotificadorWhatsApp adapter) {

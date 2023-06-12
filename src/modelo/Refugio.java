@@ -8,6 +8,7 @@ public class Refugio {
 	private static ArrayList<Animal> animales = new ArrayList<Animal>();
 	private static ArrayList<Especie> especies = new ArrayList<Especie>();
 	private static ArrayList<Alarma> alarmas = new ArrayList<Alarma>();
+	private static ArrayList<Notificacion> notificacionesVisitador = new ArrayList<Notificacion>();
 	private static Usuario userConectado;
 	
 	public static Usuario getUserConectado() {

@@ -1,5 +1,7 @@
 package testMain;
 
+import java.time.DayOfWeek;
+
 import adapterAutentificador.Autenticador;
 import adapterAutentificador.IAdapterAutenticador;
 import controllers.AdopcionController;
@@ -116,7 +118,7 @@ public class claseTest {
 		System.out.println(animal.toString());
 		exportador.cambiarEstrategia(exportarExcel);
 		exportador.exportar(animal.getFichaTecnica());
-		adopcionController.crearAdopcion(pablo, animal, humberto, new CadenciaVisitas(EDiaVisita.JUEVES));
+		adopcionController.crearAdopcion(pablo, animal, humberto);
 		Notificacion notificacion = new Notificacion("que onda amigo",pablo,2);
 		switch(pablo.getPreferenciaRecordatorio()) {
 			case SMS: notificador.cambiarEstrategiaNotificacion(notificadorSMS); break;
