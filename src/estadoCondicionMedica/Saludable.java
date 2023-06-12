@@ -10,7 +10,7 @@ public class Saludable implements EstadoCondicionMedica {
 
     public void serAdoptado(Animal animal) {
         if(animal.esAdoptable()) {
-            System.out.println("Completar adopcion");
+            animal.cambiarEstado(new Adoptado());
         }
         else{
             System.out.println("El animal no puede ser adoptado, es un animal salvaje.");

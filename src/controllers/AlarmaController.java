@@ -137,7 +137,7 @@ public class AlarmaController {
 				respuesta = sc.nextLine();
 			}
 			if(respuesta.toUpperCase().equals("S")) {
-				animal.cambiarEstado(new Saludable());
+				animal.getEstado().recuperar(animal);
 			}
 		}else if(animal.getEstado().equals(Saludable.class)) {
 			System.out.println("El animal tiene algun problema de salud? (S/N)");

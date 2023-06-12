@@ -22,6 +22,7 @@ public class AdopcionController {
 			seguimiento.setCadenciaVisitas(solicitarCadenciaVisitas());
 			cliente.setAnimalesAdoptados(cliente.getAnimalesAdoptados() + 1);
 			Adopcion adopcion = new Adopcion(cliente, animal);
+			animal.serAdoptado(animal);
 			seguimiento.setAdopcion(adopcion);
 			System.out.println(animal + "Adoptado correctamente");
 			Refugio.setAdopciones(adopcion);

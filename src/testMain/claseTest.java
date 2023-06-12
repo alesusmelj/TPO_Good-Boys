@@ -126,7 +126,7 @@ public class claseTest {
 			case EMAIL: notificador.cambiarEstrategiaNotificacion(notificadorEmail); break;
 		}
 		System.out.println(notificacion.toString());
-		notificador.enviar(notificacion);
+		//notificador.enviar(notificacion);
 		Alarma alarma = alarmaController.crearAlarmaTratamientoMedico(animal);
 		TratamientoMedico trat = (TratamientoMedico) alarma.getTipo();
 //		Utilidades.esperar(15);
