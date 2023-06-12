@@ -33,12 +33,12 @@ public class Control implements TipoAlarma{
 
 	@Override
 	public String toString() {
-		return "Control [accionesARealizar=" + accionesARealizar + ", fecha=" + fecha + "]";
+		return "Control, Acciones a realizar: " + accionesARealizar + ", fecha: " + fecha;
 	}
 
 	@Override
 	public void enviarNotificacionPush(Alarma alarma) {
-		if(Refugio.getUserConectado().getClass().equals(Veterinario.class)) {
+		if(Refugio.getInstance().getUserConectado().getClass().equals(Veterinario.class)) {
 			System.out.println(this.toString());
 		}
 	}

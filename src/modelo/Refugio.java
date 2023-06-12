@@ -3,52 +3,108 @@ package modelo;
 import java.util.ArrayList;
 
 public class Refugio {
-	private static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-	private static ArrayList<Adopcion> adopciones = new ArrayList<Adopcion>();
-	private static ArrayList<Animal> animales = new ArrayList<Animal>();
-	private static ArrayList<Especie> especies = new ArrayList<Especie>();
-	private static ArrayList<Alarma> alarmas = new ArrayList<Alarma>();
-	private static ArrayList<Notificacion> notificacionesVisitador = new ArrayList<Notificacion>();
-	private static Usuario userConectado;
+	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	private ArrayList<Adopcion> adopciones = new ArrayList<Adopcion>();
+	private ArrayList<Animal> animales = new ArrayList<Animal>();
+	private ArrayList<Especie> especies = new ArrayList<Especie>();
+	private ArrayList<Alarma> alarmas = new ArrayList<Alarma>();
+	private ArrayList<Notificacion> notificacionesVisitador = new ArrayList<Notificacion>();
+	private ArrayList<Seguimiento> seguimientoAdopciones = new ArrayList<Seguimiento>();
+	private Usuario userConectado;
+	private static Refugio instance;
 	
-	public static Usuario getUserConectado() {
+	
+	private Refugio() {};
+	public static Refugio getInstance() {
+		if(instance == null) {
+			instance = new Refugio();
+		}
+		return instance;
+	}
+	public void listarAnimales() {
+		for(Animal animal: animales) {
+			System.out.println(animal);
+		}
+	}
+	
+	public Animal buscarAnimal(int idAnimal) {
+		for(Animal animal: animales) {
+			if(animal.getIdAnimal() == idAnimal) {
+				return animal;
+			}
+		}
+		return null;
+	}
+	public void listarAlarmas() {
+		int cont = 0;
+		for(Alarma alarma: alarmas) {
+			cont++;
+			System.out.println(cont+"- "+alarma);
+		}
+	}
+	
+	public void listarSeguimientos() {
+		int cont = 0;
+		for(Seguimiento seguimiento: seguimientoAdopciones) {
+			cont++;
+			System.out.println(cont+"- "+seguimiento);
+		}
+	}
+	public void listarVisitasDeSeguimiento(Seguimiento seguimiento) {
+		int cont = 0;
+			for(Visita visita: seguimiento.getVisitas()) {
+				cont++;
+				System.out.println(" "+cont+"- "+visita);
+			}
+		}
+	
+	public Usuario getUserConectado() {
 		return userConectado;
 	}
-	public static void setUserConectado(Usuario userConectado) {
-		Refugio.userConectado = userConectado;
+	public void setUserConectado(Usuario userConectado) {
+		this.userConectado = userConectado;
 	}
-	public static ArrayList<Usuario> getUsuarios() {
+	public ArrayList<Usuario> getUsuarios() {
 		return usuarios;
 	}
-	public static void setUsuario(Usuario usuario) {
-		Refugio.usuarios.add(usuario);
+	public void setUsuario(Usuario usuario) {
+		this.usuarios.add(usuario);
 	}
-	public static ArrayList<Adopcion> getAdopciones() {
+	public ArrayList<Adopcion> getAdopciones() {
 		return adopciones;
 	}
-	public static void setAdopciones(Adopcion adopcion) {
-		Refugio.adopciones.add(adopcion);
+	public void setAdopciones(Adopcion adopcion) {
+		this.adopciones.add(adopcion);
 	}
-	public static ArrayList<Animal> getAnimales() {
+	public ArrayList<Animal> getAnimales() {
 		return animales;
 	}
-	public static void setAnimales(Animal animal) {
-		Refugio.animales.add(animal);
+	public void setAnimales(Animal animal) {
+		this.animales.add(animal);
 	}
-	public static ArrayList<Especie> getEspecies() {
+	public ArrayList<Especie> getEspecies() {
 		return especies;
 	}
-	public static void setEspecies(Especie especie) {
-		Refugio.especies.add(especie);
+	public void setEspecies(Especie especie) {
+		this.especies.add(especie);
 	}
-	public static ArrayList<Alarma> getAlarmas() {
+	public ArrayList<Alarma> getAlarmas() {
 		return alarmas;
 	}
-	public static void setAlarma(Alarma alarma) {
-		Refugio.alarmas.add(alarma);
+	public void setAlarma(Alarma alarma) {
+		this.alarmas.add(alarma);
 	}
 	
-	public static void eliminarAlarma(Alarma alarma) {
-		Refugio.alarmas.remove(alarma);
+	public void eliminarAlarma(Alarma alarma) {
+		this.alarmas.remove(alarma);
+	}
+	public ArrayList<Seguimiento> getSeguimientoAdopciones() {
+		return seguimientoAdopciones;
+	}
+	public void setSeguimientoAdopcion(Seguimiento seguimientoAdopciones) {
+		this.seguimientoAdopciones.add(seguimientoAdopciones);
+	}
+	public void eliminarSeguimiento(Seguimiento seguimientoAdopciones) {
+		this.alarmas.remove(seguimientoAdopciones);
 	}
 }

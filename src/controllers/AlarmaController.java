@@ -21,7 +21,7 @@ public class AlarmaController {
 		Control control = new Control();
 		Alarma alarma = control.crearAlarma(control);
 		configuracionAlarmaControl(control,animal);
-		Refugio.setAlarma(alarma);
+		Refugio.getInstance().setAlarma(alarma);
 		alarma.enviarNotificacionPush();
 		System.out.println("Se ha creado una nueva alarma de control");
 		return alarma;
@@ -31,7 +31,7 @@ public class AlarmaController {
 		TratamientoMedico tratamiento = new TratamientoMedico();
 		Alarma alarma = tratamiento.crearAlarma(tratamiento);
 		configuracionAlarmaTratamiento(tratamiento, animal);
-		Refugio.setAlarma(alarma);
+		Refugio.getInstance().setAlarma(alarma);
 		alarma.enviarNotificacionPush();
 		System.out.println("Se ha creado una nueva alarma de tratamiento medico");
 		return alarma;
@@ -39,7 +39,7 @@ public class AlarmaController {
 
 	public void configuracionAlarmaControl(Control control,Animal animal) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Configuración de alarma de contro para el animal: "+animal);
+		System.out.println("Configuración de alarma de control para el animal: "+animal);
 		animal.getFichaTecnica().agregarControl(control);
 		System.out.println("Por favor indique las acciones a realizar. Se le solicitará el nombre de la acción y luego la descripción de la misma.");
 		System.out.println("Nombre de la acción a realizar:");
@@ -94,37 +94,37 @@ public class AlarmaController {
 		tratamiento.setFechaFin(Utilidades.solicitarUnaFecha());
 	}
 	
-	public void atenderControl(Veterinario veterinario, Control control, Animal animal) {
-		control.setVeterinario(veterinario);
-		control.marcarFinalizado();
+	public void atenderControl(Veterinario veterinario, Alarma alarma, Animal animal) {
+		((Control) alarma.getTipo()).setVeterinario(veterinario);
+		((Control) alarma.getTipo()).marcarFinalizado();
 		Scanner sc = new Scanner(System.in);
 		consultarEstadoAnimal(animal);
 		System.out.println("Ingrese a modo de comentario lo realizado en el segumiento del tratamiento:");
-		control.setComentario(sc.nextLine());
-		Refugio.getAlarmas().remove(control);
+		((Control) alarma.getTipo()).setComentario(sc.nextLine());
+		Refugio.getInstance().eliminarAlarma(alarma);
 	}
 
-	public void atenderTratamientoMedico(Veterinario veterinario, TratamientoMedico tratamientoMedico, Animal animal) {
+	public void atenderTratamientoMedico(Veterinario veterinario, Alarma alarma, Animal animal) {
 		SeguimientoTratamiento seguimientoTratamiento = new SeguimientoTratamiento();
-		tratamientoMedico.setVeterinario(veterinario);
+		((TratamientoMedico) alarma.getTipo()).setVeterinario(veterinario);
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Desea finalizar el tratamiento: "+ tratamientoMedico + "? (S/N)");
+		System.out.println("Desea finalizar el tratamiento: "+ alarma.getTipo() + "? (S/N)");
 		String respuesta = sc.nextLine();
 		while ((!respuesta.toUpperCase().equals("S")) && (!respuesta.toUpperCase().equals("N"))) {
-			System.out.println("Error. Desea finalizar el tratamiento: "+ tratamientoMedico + "? (S/N)");
+			System.out.println("Error. Desea finalizar el tratamiento: "+ alarma.getTipo() + "? (S/N)");
 			respuesta = sc.nextLine();
 		}
 		if (respuesta.toUpperCase().equals("S")) {
-			tratamientoMedico.marcarFinalizado();
-			Refugio.getAlarmas().remove(tratamientoMedico);
+			((TratamientoMedico) alarma.getTipo()).marcarFinalizado();
+			Refugio.getInstance().eliminarAlarma(alarma);
 		}
 		seguimientoTratamiento.setVeterinario(veterinario);
 		seguimientoTratamiento.setFecha(LocalDateTime.now());
 		consultarEstadoAnimal(animal);
 		System.out.println("Ingrese a modo de comentario lo realizado en el segumiento del tratamiento:");
 		seguimientoTratamiento.setComentario(sc.nextLine());
-		seguimientoTratamiento.setTratamiento(tratamientoMedico);
-		tratamientoMedico.setSeguimientosTratamiento(seguimientoTratamiento);
+		seguimientoTratamiento.setTratamiento((TratamientoMedico)alarma.getTipo());
+		((TratamientoMedico) alarma.getTipo()).setSeguimientosTratamiento(seguimientoTratamiento);
 	}
 	
 	public void consultarEstadoAnimal (Animal animal) {

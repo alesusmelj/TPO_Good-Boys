@@ -21,10 +21,17 @@ import java.util.TimerTask;
 public class Utilidades {
 
 	public static int nroMatricula = 1;
-
+	public static int idAnimal = 1;
+	
 	public static int contadorNumeroMatricula() {
 		int aux = nroMatricula;
 		nroMatricula++;
+		return aux;	
+	}
+	
+	public static int contadorIdAnimal() {
+		int aux = idAnimal;
+		idAnimal++;
 		return aux;	
 	}
 	
@@ -57,7 +64,7 @@ public class Utilidades {
         	long tiempoInicio = System.currentTimeMillis();
             @Override
             public void run() {
-                System.out.println(alarma);
+                System.out.println("NOTIFICACION PUSH: "+alarma);
                 long tiempoActual = System.currentTimeMillis();
                 long duracionTranscurrida = tiempoActual - tiempoInicio;
                 if(duracionTranscurrida >= duracionTotal) {

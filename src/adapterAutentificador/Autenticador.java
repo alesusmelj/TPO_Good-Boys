@@ -18,7 +18,7 @@ public class Autenticador implements IAdapterAutenticador {
     	System.out.println("Iniciando sesion...");
     	Utilidades.esperar(1);
 
-    	for(Usuario u:Refugio.getUsuarios()) {
+    	for(Usuario u:Refugio.getInstance().getUsuarios()) {
     		contadorAux++;
 
 			if(iniciadoAux == false) {
@@ -30,17 +30,17 @@ public class Autenticador implements IAdapterAutenticador {
 							System.out.println("El usuario: " + usuario + " (" + tipoUsuario + ")" + " ha iniciado sesion correctamente.");
 							System.out.println();
 							u.setAutenticado(true);
-							Refugio.setUserConectado(u);
+							Refugio.getInstance().setUserConectado(u);
 							iniciadoAux = true;
 						}
 
 						else if(u.isAutenticado() == true) {
-							System.out.println("El usuario ya está conectado.");
+							System.out.println("El usuario ya esta conectado.");
 						}
 					}
 
-					else if(Refugio.getUsuarios().size() == contadorAux && u.isAutenticado() == false) {
-						System.out.println("El usuario o la contrasena es incorrecta.");
+					else if(Refugio.getInstance().getUsuarios().size() == contadorAux && u.isAutenticado() == false) {
+						System.out.println("El usuario o la contrasenia es incorrecta.");
 					}
 				}
 

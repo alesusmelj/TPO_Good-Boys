@@ -15,7 +15,7 @@ public class AdapterEmail implements AdapterNotificadorEmail {
 	}
 
 	public void enviarEmail(Notificacion notificacion, Visita visita) {
-		if(Refugio.getUserConectado().getClass().equals(Visitador.class)) {
+		if(Refugio.getInstance().getUserConectado().getClass().equals(Visitador.class)) {
 			Utilidades.claseTimerSeguimientosVisitaEmail(notificacion, visita, notificacion.getDiasPreferencia());
 		}
     }

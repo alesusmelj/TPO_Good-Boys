@@ -35,6 +35,7 @@ public class Visita {
     	}
 		if(continuarVisita.toUpperCase().equals("N")) {
 			seguimiento.cambiarEstado(new Finalizado());
+			Refugio.getInstance().eliminarSeguimiento(seguimiento);
 		}
     }
     

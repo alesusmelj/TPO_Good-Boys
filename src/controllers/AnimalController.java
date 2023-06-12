@@ -38,7 +38,7 @@ public class AnimalController {
 		Animal nuevoAnimal = new AnimalDomestico();
 		FichaTecnica fichaTecnicaNuevoAnimal = new FichaTecnica(nuevoAnimal);
 		nuevoAnimal.setFichaTecnica(fichaTecnicaNuevoAnimal);
-		Refugio.setAnimales(nuevoAnimal);
+		Refugio.getInstance().setAnimales(nuevoAnimal);
 		System.out.println("Por favor, para ingresar un animal llene los siguientes datos:");
 		System.out.println("Ingrese el tipo de animal: \n 1-Perro \n 2-Gato \n 3-Canario \n 4-Loro \n 5-Tortuga");
 		String decision = sc.nextLine();
@@ -48,13 +48,14 @@ public class AnimalController {
 			decision = sc.nextLine();
 		}
 		switch(decision) {
-			case "1": nuevoAnimal.setEspecie(Refugio.getEspecies().get(0)); break;
-			case "2": nuevoAnimal.setEspecie(Refugio.getEspecies().get(1)); break;
-			case "3": nuevoAnimal.setEspecie(Refugio.getEspecies().get(2)); break;
-			case "4": nuevoAnimal.setEspecie(Refugio.getEspecies().get(3)); break;
-			case "5": nuevoAnimal.setEspecie(Refugio.getEspecies().get(4)); break;
+			case "1": nuevoAnimal.setEspecie(Refugio.getInstance().getEspecies().get(0)); break;
+			case "2": nuevoAnimal.setEspecie(Refugio.getInstance().getEspecies().get(1)); break;
+			case "3": nuevoAnimal.setEspecie(Refugio.getInstance().getEspecies().get(2)); break;
+			case "4": nuevoAnimal.setEspecie(Refugio.getInstance().getEspecies().get(3)); break;
+			case "5": nuevoAnimal.setEspecie(Refugio.getInstance().getEspecies().get(4)); break;
 		}
 		guardarDatosAnimal(nuevoAnimal);
+		System.out.println("Se ha ingresado al animal "+nuevoAnimal+ "correctamente");
 		return nuevoAnimal;
 	}
 	
@@ -63,21 +64,22 @@ public class AnimalController {
 		Animal nuevoAnimal = new AnimalSalvaje();
 		FichaTecnica fichaTecnicaNuevoAnimal = new FichaTecnica(nuevoAnimal);
 		nuevoAnimal.setFichaTecnica(fichaTecnicaNuevoAnimal);
-		Refugio.setAnimales(nuevoAnimal);	
+		Refugio.getInstance().setAnimales(nuevoAnimal);	
 		System.out.println("Por favor, para ingresar un animal llene los siguientes datos:");
-		System.out.println("Ingrese el tipo de animal: \n 1-Zorro \n 2-Ping�ino \n 3-Halcon");
+		System.out.println("Ingrese el tipo de animal: \n 1-Zorro \n 2-Pinguino \n 3-Halcon");
 		String decision = sc.nextLine();
 		while((!decision.equals("1")) && (!decision.equals("2")) && (!decision.equals("3"))) {
 			System.out.println("Error. Por favor seleccione una opcion");
-			System.out.println("Ingrese el tipo de animal: \n 1-Zorro \n 2-Ping�ino \n 3-Halcon");
+			System.out.println("Ingrese el tipo de animal: \n 1-Zorro \n 2-Pinguino \n 3-Halcon");
 			decision = sc.nextLine();
 		}
 		switch(decision) {
-		case "1": nuevoAnimal.setEspecie(Refugio.getEspecies().get(5)); break;
-		case "2": nuevoAnimal.setEspecie(Refugio.getEspecies().get(6)); break;
-		case "3": nuevoAnimal.setEspecie(Refugio.getEspecies().get(7)); break;
+		case "1": nuevoAnimal.setEspecie(Refugio.getInstance().getEspecies().get(5)); break;
+		case "2": nuevoAnimal.setEspecie(Refugio.getInstance().getEspecies().get(6)); break;
+		case "3": nuevoAnimal.setEspecie(Refugio.getInstance().getEspecies().get(7)); break;
 		}
 		guardarDatosAnimal(nuevoAnimal);
+		System.out.println("Se ha ingresado al animal "+nuevoAnimal+ "correctamente");
 		return nuevoAnimal;
 	}
 	
@@ -97,7 +99,7 @@ public class AnimalController {
 	
 	public Double solicitarEdad() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Ingrese la edad aproximada del animal en a�os: ");
+		System.out.println("Ingrese la edad aproximada del animal en anios: ");
 		Double edad = sc.nextDouble();
 		return edad;
 	}

@@ -33,6 +33,7 @@ public class Seguimiento implements EstadoSeguimiento {
     }
 	@Override
 	public void realizarSeguimiento(Seguimiento segumiento) {
+		this.estado.realizarSeguimiento(segumiento);
 	}
 
 	public Notificador getNotificador() {
@@ -94,42 +95,5 @@ public class Seguimiento implements EstadoSeguimiento {
 	public void setAdopcion(Adopcion adopcion) {
 		this.adopcion = adopcion;
 	}
-
-	public void crearVisita() {
-	    	Visita visita = new Visita();
-	    	this.visitas.add(visita);
-	    	Scanner sc = new Scanner(System.in);
-	        boolean datosInvalidos = true;
-	        do {
-		        try {
-				    System.out.println("Por favor indique la fecha cuando se va a realizar la visita: ");
-				    visita.setFecha(Utilidades.solicitarUnaFecha());
-			        System.out.print("Ingrese la hora de inicio del rango (formato: HH:mm): ");
-			        String horaStr = sc.next();
-			        LocalTime hora = LocalTime.parse(horaStr);
-			        while(!Utilidades.estaEnRangoHorario(visita.getFecha(), this.cadenciaVisitas.getDia(), this.cadenciaVisitas.getRangoHorarioInicio(), this.cadenciaVisitas.getRangoHorarioFin())) {
-					    System.out.println("La fecha ingresada no corresponde con lo solicitado por el cliente. La cadencia es: " + this.cadenciaVisitas);
-					    System.out.println("Por favor indique la fecha cuando se va a realizar la visita: ");
-					    visita.setFecha(Utilidades.solicitarUnaFecha());
-				        System.out.print("Ingrese la hora de inicio del rango (formato: HH:mm): ");
-				        horaStr = sc.next();
-				        hora = LocalTime.parse(horaStr);
-			        }
-			        datosInvalidos = false;
-		        } catch (InputMismatchException e) {
-		        	System.out.println("Error: Se ingresó un valor inválido. Asegúrese de ingresar los datos correctamente.");
-		        	sc.nextLine();
-		        } catch (Exception e) {
-		        	System.out.println("Error: Ha ocurrido un problema al solicitar los datos. Inténtelo nuevamente.");
-		        	sc.nextLine();
-		        }
-	        } while (datosInvalidos);
-	        Scanner sc2 = new Scanner(System.in);
-	        System.out.println("Por favor, indique los dias de anticipacion para el envio del recordatorio Ejemplo: 2 -> 2 dias antes"); 
-	        Notificacion notificacion = new Notificacion();
-	        notificacion.setDiasPreferencia(sc.nextInt());
-	        notificacion.setMensaje("Visita programada para la fecha: "+visita.getFecha());
-	        notificacion.setCliente(this.adopcion.getCliente());
-	        notificador.enviar(notificacion);
-	    }
+	
 }

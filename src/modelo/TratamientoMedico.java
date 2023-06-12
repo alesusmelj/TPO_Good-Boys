@@ -111,14 +111,14 @@ public class TratamientoMedico implements TipoAlarma{
 
 	@Override
 	public String toString() {
-		return "TratamientoMedico [fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", acciones=" + acciones
-				+ ", descripcion=" + descripcion + ", nombre=" + nombre + ", periodicidad=" + periodicidad
+		return "TratamientoMedico, "+nombre+" fecha inicio: " + fechaInicio + ", fecha fin: " + fechaFin + ", acciones: " + acciones
+				+ ", descripcion=" + descripcion + ", periodicidad=" + periodicidad
 				+ ", estaFinalizado=" + estaFinalizado + "]";
 	}
 
 	@Override
 	public void enviarNotificacionPush(Alarma alarma) {
-		if(Refugio.getUserConectado().getClass().equals(Veterinario.class)) {
+		if(Refugio.getInstance().getUserConectado().getClass().equals(Veterinario.class)) {
 			this.timer = Utilidades.claseTimer(alarma, periodicidad);
 		}
 		

@@ -25,7 +25,6 @@ import modelo.Animal;
 import modelo.AnimalDomestico;
 import modelo.CadenciaVisitas;
 import modelo.Cliente;
-import modelo.EDiaVisita;
 import modelo.EpreferenciaRecordatorio;
 import modelo.Especie;
 import modelo.EtipoAnimal;
@@ -64,39 +63,39 @@ public class claseTest {
 		//Agregamos un veterinario y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
 		Veterinario juan = new Veterinario("Juan","Martinez","juan2023","12345");
 		juan.setAdapter(autenticacion);
-		Refugio.setUsuario(juan);
+		Refugio.getInstance().setUsuario(juan);
 
 		//Agregamos otro veterinario y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
 		Veterinario maria = new Veterinario("Maria","Gomez","maria2023","6789");
 		maria.setAdapter(autenticacion);
-		Refugio.setUsuario(maria);
+		Refugio.getInstance().setUsuario(maria);
 
 		//Agregamos visitador y seteamos su adapter de autenticacion y lo agregamos a la lista de usuarios
 		Visitador humberto = new Visitador("Humberto","Felk","humberto2023","123");
 		humberto.setAdapter(autenticacion);
-		Refugio.setUsuario(humberto);
+		Refugio.getInstance().setUsuario(humberto);
 
 		//Autenticacion de Veterinarios
 		juan.autenticar("juan2023","12345", juan.getTipoUsuario());
-		System.out.println(Refugio.getUserConectado());
+		System.out.println(Refugio.getInstance().getUserConectado());
 		//Autenticacion de Visitadores
 		//Creacion de especies
 		Especie perro = new Especie("Perro",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(perro);
+		Refugio.getInstance().setEspecies(perro);
 		Especie gato = new Especie("Gato",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(gato);
+		Refugio.getInstance().setEspecies(gato);
 		Especie canario = new Especie("Canario",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(canario);
+		Refugio.getInstance().setEspecies(canario);
 		Especie loro = new Especie("Loro",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(loro);
+		Refugio.getInstance().setEspecies(loro);
 		Especie tortuga = new Especie("Tortuga",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(tortuga);
+		Refugio.getInstance().setEspecies(tortuga);
 		Especie zorro = new Especie("Zorro",EtipoAnimal.SALVAJE);
-		Refugio.setEspecies(zorro);
+		Refugio.getInstance().setEspecies(zorro);
 		Especie pinguino = new Especie("Pinguino",EtipoAnimal.SALVAJE);
-		Refugio.setEspecies(pinguino);
+		Refugio.getInstance().setEspecies(pinguino);
 		Especie halcon = new Especie("Halcon",EtipoAnimal.SALVAJE);
-		Refugio.setEspecies(halcon);
+		Refugio.getInstance().setEspecies(halcon);
 		
 		//Creacion de Animal
 		Animal primerGato = new AnimalDomestico(gato,15,3,5);

@@ -34,20 +34,20 @@ public class Mock {
         // ---Veterinarios---
         juan = new Veterinario("Juan","Martinez","juan2023","12345");
 		juan.setAdapter(autenticacion);
-		Refugio.setUsuario(juan);
+		Refugio.getInstance().setUsuario(juan);
 
 		maria = new Veterinario("Maria","Gomez","maria2023","6789");
 		maria.setAdapter(autenticacion);
-		Refugio.setUsuario(maria);
+		Refugio.getInstance().setUsuario(maria);
         
         // ---Visitadores---
 		humberto = new Visitador("Humberto","Felk","humberto2023","123");
 		humberto.setAdapter(autenticacion);
-		Refugio.setUsuario(humberto);
+		Refugio.getInstance().setUsuario(humberto);
 
 		pedro = new Visitador("Pedro","Dominguez","pedro2023","456");
 		pedro.setAdapter(autenticacion);
-		Refugio.setUsuario(pedro);    
+		Refugio.getInstance().setUsuario(pedro);    
         
         // ---Clientes---
         pablo = new Cliente("Pablo","Diaz","Soltero","pablodiaz@gmail.com","12345","empleado",false,"quiero adoptar","Gato",0);
@@ -55,23 +55,22 @@ public class Mock {
         claudio = new Cliente("Claudio", "Godin", "Soltero", "claudiogodin@gmail.com", "321", "empleado",  true, "universidad", "loro", 2);
         
         // ---Especies---
-
-        Especie perro = new Especie("Perro",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(perro);
+		Especie perro = new Especie("Perro",EtipoAnimal.DOMESTICO);
+		Refugio.getInstance().setEspecies(perro);
 		Especie gato = new Especie("Gato",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(gato);
+		Refugio.getInstance().setEspecies(gato);
 		Especie canario = new Especie("Canario",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(canario);
+		Refugio.getInstance().setEspecies(canario);
 		Especie loro = new Especie("Loro",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(loro);
+		Refugio.getInstance().setEspecies(loro);
 		Especie tortuga = new Especie("Tortuga",EtipoAnimal.DOMESTICO);
-		Refugio.setEspecies(tortuga);
+		Refugio.getInstance().setEspecies(tortuga);
 		Especie zorro = new Especie("Zorro",EtipoAnimal.SALVAJE);
-		Refugio.setEspecies(zorro);
+		Refugio.getInstance().setEspecies(zorro);
 		Especie pinguino = new Especie("Pinguino",EtipoAnimal.SALVAJE);
-		Refugio.setEspecies(pinguino);
+		Refugio.getInstance().setEspecies(pinguino);
 		Especie halcon = new Especie("Halcon",EtipoAnimal.SALVAJE);
-		Refugio.setEspecies(halcon);
+		Refugio.getInstance().setEspecies(halcon);
 
         // ---Animales---
 
