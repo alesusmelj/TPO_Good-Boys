@@ -3,10 +3,12 @@ package modelo;
 import java.time.LocalDateTime;
 import java.util.*;
 
-/**
- * 
- */
 public class Notificacion {
+
+	private String mensaje;
+    private LocalDateTime fecha;
+    private Cliente cliente;
+    private int diasPreferencia;
 
     public Notificacion(String mensaje,Cliente cliente,int diasPreferencia) {
     	this.mensaje = mensaje;
@@ -15,11 +17,6 @@ public class Notificacion {
     	this.fecha = LocalDateTime.now();
     }
 
-    private String mensaje;
-    private LocalDateTime fecha;
-    private Cliente cliente;
-    private int diasPreferencia;
-    
 	public String getMensaje() {
 		return mensaje;
 	}
@@ -32,11 +29,9 @@ public class Notificacion {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	@Override
+
 	public String toString() {
-		return "Notificacion [mensaje=" + mensaje + ", fecha=" + fecha + ", cliente=" + cliente + ", diasPreferencia="
+		return "Notificacion [mensaje: " + mensaje + ", fecha: " + fecha + ", cliente: " + cliente + ", diasPreferencia: "
 				+ diasPreferencia + "]";
 	}
-	
-
 }

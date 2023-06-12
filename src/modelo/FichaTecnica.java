@@ -1,12 +1,8 @@
 package modelo;
 
 import java.util.*;
-
 import estrategiaExportacion.IExportar;
 
-/**
- * 
- */
 public class FichaTecnica {
 	
     private Animal animal;
@@ -29,7 +25,6 @@ public class FichaTecnica {
 
 	@Override
 	public String toString() {
-		return "FichaTecnica [animal=" + animal + "]";
+		return "FichaTecnica [animal: " + animal + "]";
 	}
-
 }

@@ -33,7 +33,7 @@ public class Control implements TipoAlarma{
 
 	@Override
 	public String toString() {
-		return "Control [accionesARealizar=" + accionesARealizar + ", fecha=" + fecha + "]";
+		return "Control [accionesARealizar:" + accionesARealizar + ", fecha:" + fecha + "]";
 	}
 
 	@Override
@@ -58,7 +58,4 @@ public class Control implements TipoAlarma{
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
-	
-	
-
 }

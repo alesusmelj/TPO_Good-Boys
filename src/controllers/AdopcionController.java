@@ -18,14 +18,15 @@ public class AdopcionController {
 			cliente.setPreferenciaRecordatorio(solicitarPreferenciaRecordatorio());
 			cliente.setAnimalesAdoptados(cliente.getAnimalesAdoptados() + 1);
 			Adopcion adopcion = new Adopcion(cliente, animal, seguimiento);
-			System.out.println(animal + "Adoptado correctamente");
+			animal.serAdoptado(animal);
+			System.out.println(animal + "ha sido adoptado correctamente");
 			Refugio.setAdopciones(adopcion);
 		}
 		else if(!cliente.puedeAdoptar()) {
 			System.out.println("El cliente " + cliente.getNombre() + "ya posee mas de 2 mascotas");
 		}
 		else if(!animal.esAdoptable()) {
-			System.out.println("El animal " + animal + "no se puede adoptar");
+			animal.serAdoptado(animal);
 		}
 	}
 	

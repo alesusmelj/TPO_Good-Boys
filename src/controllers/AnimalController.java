@@ -65,11 +65,11 @@ public class AnimalController {
 		nuevoAnimal.setFichaTecnica(fichaTecnicaNuevoAnimal);
 		Refugio.setAnimales(nuevoAnimal);	
 		System.out.println("Por favor, para ingresar un animal llene los siguientes datos:");
-		System.out.println("Ingrese el tipo de animal: \n 1-Zorro \n 2-Ping�ino \n 3-Halcon");
+		System.out.println("Ingrese el tipo de animal: \n 1-Zorro \n 2-Pinguino \n 3-Halcon");
 		String decision = sc.nextLine();
 		while((!decision.equals("1")) && (!decision.equals("2")) && (!decision.equals("3"))) {
 			System.out.println("Error. Por favor seleccione una opcion");
-			System.out.println("Ingrese el tipo de animal: \n 1-Zorro \n 2-Ping�ino \n 3-Halcon");
+			System.out.println("Ingrese el tipo de animal: \n 1-Zorro \n 2-Pinguino \n 3-Halcon");
 			decision = sc.nextLine();
 		}
 		switch(decision) {
@@ -97,7 +97,7 @@ public class AnimalController {
 	
 	public Double solicitarEdad() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Ingrese la edad aproximada del animal en a�os: ");
+		System.out.println("Ingrese la edad aproximada del animal en años: ");
 		Double edad = sc.nextDouble();
 		return edad;
 	}

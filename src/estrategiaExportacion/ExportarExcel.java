@@ -1,12 +1,8 @@
 package estrategiaExportacion;
 
 import java.util.*;
-
 import modelo.FichaTecnica;
 
-/**
- * 
- */
 public class ExportarExcel implements IExportar {
 	private AdapterExportarExcel adapter;
 	
@@ -17,7 +13,5 @@ public class ExportarExcel implements IExportar {
 
     public void exportar(FichaTecnica fichaTecnica) {
     	this.adapter.exportarExcel(fichaTecnica);
-
     }
-
 }

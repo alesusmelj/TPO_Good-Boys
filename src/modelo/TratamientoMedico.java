@@ -121,7 +121,6 @@ public class TratamientoMedico implements TipoAlarma{
 		if(Refugio.getUserConectado().getClass().equals(Veterinario.class)) {
 			this.timer = Utilidades.claseTimer(alarma, periodicidad);
 		}
-		
 	}
 
 	public Veterinario getVeterinario() {
@@ -135,5 +134,4 @@ public class TratamientoMedico implements TipoAlarma{
 	public void setSeguimientosTratamiento(SeguimientoTratamiento seguimientosTratamiento) {
 		this.seguimientosTratamiento.add(seguimientosTratamiento);
 	}		
-
 }

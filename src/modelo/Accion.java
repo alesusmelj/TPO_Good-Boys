@@ -12,8 +12,7 @@ public class Accion {
     	this.descripcion = desc;
     }
 
-	public Accion() {
-	}
+	public Accion() {}
 
 	public String getNombreAccion() {
 		return nombreAccion;
@@ -35,5 +34,4 @@ public class Accion {
 	public String toString() {
 		return "Accion [nombreAccion=" + nombreAccion + ", descripcion=" + descripcion + "]";
 	}
-
 }

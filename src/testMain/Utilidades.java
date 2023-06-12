@@ -30,16 +30,16 @@ public class Utilidades {
 			System.out.println(e);
 		}
 	}
+
 	public static LocalDateTime solicitarUnaFecha() {
         Scanner scanner = new Scanner(System.in);
         // Solicitar al usuario que ingrese una fecha
-        System.out.print("Ingrese una fecha (formato: dd/MM/yyyy HH:mm:ss): ");
+        System.out.print("Ingrese una fecha (formato: dd/MM/yyyy HH:mm:SS): ");
         String fechaIngresada = scanner.nextLine();
         // Definir el formato de la fecha
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime fecha = LocalDateTime.parse(fechaIngresada, formatter);
 		return fecha;
-	 
     } 
 	
 	public static Timer claseTimer(Alarma alarma, int periodo) {

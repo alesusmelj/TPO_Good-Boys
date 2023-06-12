@@ -2,9 +2,6 @@ package modelo;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Cliente {
     private String nombre;
     private String apellido;
@@ -18,9 +15,7 @@ public class Cliente {
     private EpreferenciaRecordatorio preferenciaRecordatorio;
     private int animalesAdoptados;
     
-    public Cliente() {
-    	
-    }
+    public Cliente() {}
     
     public Cliente(String nombre, String apellido, String estadoCivil, String email, String telefono, String ocupacion, boolean otrasMascotas, String motivoAdopcion,
     	String tipoAnimalInteresado, int animalesAdoptados){
@@ -35,7 +30,6 @@ public class Cliente {
     	this.tipoAnimalInteresado = tipoAnimalInteresado;
     	this.animalesAdoptados = animalesAdoptados;
     }
-
 
     public boolean solicitarAdopcion(Animal animal,Visitador visitador, CadenciaVisitas cadencia,EpreferenciaRecordatorio preferenciaRecordatorio) {
     	if(animal.esAdoptable() && this.puedeAdoptar()) {
@@ -53,7 +47,6 @@ public class Cliente {
     		return false;
     	}
     	return true;
-
     }
 
 	public String getApellido() {

@@ -38,5 +38,4 @@ public class Alarma {
 	public void setTipo(TipoAlarma tipo) {
 		this.tipo = tipo;
 	}
-
 }
