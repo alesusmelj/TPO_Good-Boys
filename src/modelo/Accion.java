@@ -32,6 +32,6 @@ public class Accion {
 
 	@Override
 	public String toString() {
-		return "Accion [nombreAccion=" + nombreAccion + ", descripcion=" + descripcion + "]";
+		return "Accion: " + nombreAccion + ", descripcion: " + descripcion;
 	}
 }

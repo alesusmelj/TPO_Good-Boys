@@ -25,7 +25,8 @@ public class AdopcionController {
 			animal.serAdoptado(animal);
 			seguimiento.setAdopcion(adopcion);
 			System.out.println(animal + "Adoptado correctamente");
-			Refugio.setAdopciones(adopcion);
+			Refugio.getInstance().setAdopciones(adopcion);
+			Refugio.getInstance().setSeguimientoAdopcion(seguimiento);
 			System.out.println(seguimiento);
 		}
 		else if(!cliente.puedeAdoptar()) {
@@ -75,10 +76,10 @@ public class AdopcionController {
 		        cadenciaVisitas = new CadenciaVisitas(diaSemana, inicioRango, finRango);
 		        datosInvalidos = false;
 	        } catch (InputMismatchException e) {
-	        	System.out.println("Error: Se ingresó un valor inválido. Asegúrese de ingresar los datos correctamente.");
+	        	System.out.println("Error: Se ingresó un valor invalido. Asegúrese de ingresar los datos correctamente.");
 	        	scanner.nextLine();
 	        } catch (Exception e) {
-	        	System.out.println("Error: Ha ocurrido un problema al solicitar los datos. Inténtelo nuevamente.");
+	        	System.out.println("Error: Ha ocurrido un problema al solicitar los datos. Intentelo nuevamente.");
 	        	scanner.nextLine();
 	        }
         } while (datosInvalidos);

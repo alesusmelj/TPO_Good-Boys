@@ -9,16 +9,6 @@ public class Alarma {
     public Alarma(TipoAlarma tipoAlarma) {
     	this.tipo = tipoAlarma;
     }
-
-    public void atender() {
-    }
-
-    public void programarAlarma() {
-    }
-
-    public void modificarAlarma() {
-    }
-
 	public Alarma() {
 	}
 

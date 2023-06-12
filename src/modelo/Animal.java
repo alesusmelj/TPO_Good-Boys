@@ -4,9 +4,11 @@ import java.util.*;
 import estadoCondicionMedica.Enfermo;
 import estadoCondicionMedica.EstadoCondicionMedica;
 import estadoCondicionMedica.Saludable;
+import testMain.Utilidades;
 
 public abstract class Animal implements EstadoCondicionMedica{
-
+	
+	protected int idAnimal;
     protected Especie especie;
     protected EstadoCondicionMedica estado;
     protected double altura;
@@ -15,9 +17,13 @@ public abstract class Animal implements EstadoCondicionMedica{
     protected FichaTecnica fichaTecnica;
     
     public Animal() {
+    	this.idAnimal = Utilidades.contadorIdAnimal();
+    	this.estado = new Enfermo();
+
     }
 
     public Animal(Especie especie, double altura, double peso, double edadAproximada) {
+    	this.idAnimal = Utilidades.contadorIdAnimal();
         this.especie = especie;
         this.altura = altura;
         this.peso = peso;
@@ -32,7 +38,7 @@ public abstract class Animal implements EstadoCondicionMedica{
     public void serAdoptado(Animal animal){}
 
     public String toString() {
-        return  especie + " altura: " + altura + "cm, peso: " + peso + "kg, edad aproximada: " + edadAproximada + " años " + "\n";
+        return  "idAnimal: "+idAnimal+ ", especie: "+ especie + " altura: " + altura + "cm, peso: " + peso + "kg, edad aproximada: " + edadAproximada + " anios " + "\n";
     }
 
     public Especie getEspecie() {
@@ -82,4 +88,13 @@ public abstract class Animal implements EstadoCondicionMedica{
 	public FichaTecnica getFichaTecnica() {
 		return fichaTecnica;
 	}
+
+	public int getIdAnimal() {
+		return idAnimal;
+	}
+
+	public void setIdAnimal(int idAnimal) {
+		this.idAnimal = idAnimal;
+	}
+	
 }

@@ -18,7 +18,7 @@ public class AdapterSMS implements AdapterNotificadorSMS {
     }
 
     public void enviarSMS(Notificacion notificacion, Visita visita) {
-		if(Refugio.getUserConectado().getClass().equals(Visitador.class)) {
+		if(Refugio.getInstance().getUserConectado().getClass().equals(Visitador.class)) {
 			Utilidades.claseTimerSeguimientosVisitaSMS(notificacion, visita, notificacion.getDiasPreferencia());
 		}
     }
