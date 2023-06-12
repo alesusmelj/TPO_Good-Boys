@@ -3,6 +3,10 @@ package estrategiaAdapterNotificacion;
 import java.util.*;
 
 import modelo.Notificacion;
+import modelo.Refugio;
+import modelo.Visita;
+import modelo.Visitador;
+import testMain.Utilidades;
 
 public class AdapterEmail implements AdapterNotificadorEmail {
 	
@@ -10,8 +14,10 @@ public class AdapterEmail implements AdapterNotificadorEmail {
 		super();
 	}
 
-	public void enviarEmail(Notificacion notificacion) {
-    	System.out.println("Enviando email a "+notificacion.getCliente().getNombre() + " " + notificacion.getCliente().getApellido()+" por Email: "+ " "+notificacion.getMensaje()+" ");
+	public void enviarEmail(Notificacion notificacion, Visita visita) {
+		if(Refugio.getUserConectado().getClass().equals(Visitador.class)) {
+			Utilidades.claseTimerSeguimientosVisitaEmail(notificacion, visita, notificacion.getDiasPreferencia());
+		}
     }
 
 }

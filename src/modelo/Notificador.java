@@ -10,8 +10,8 @@ public class Notificador {
 	
     public Notificador() {}
 
-    public void enviar(Notificacion notificacion) {
-    	this.estrategiaNotificacion.enviar(notificacion);
+    public void enviar(Notificacion notificacion, Visita visita) {
+    	this.estrategiaNotificacion.enviar(notificacion, visita);
     }
 
     public void cambiarEstrategiaNotificacion(EstrategiaDeNotificacion nuevaEstrategia) {

@@ -15,7 +15,7 @@ public class Autenticador implements IAdapterAutenticador {
 
     	boolean iniciadoAux = false;
     	int contadorAux = 0;
-    	System.out.println("Iniciando sesión...");
+    	System.out.println("Iniciando sesion...");
     	Utilidades.esperar(1);
 
     	for(Usuario u:Refugio.getUsuarios()) {
@@ -27,7 +27,7 @@ public class Autenticador implements IAdapterAutenticador {
 					if(u.getNombreUsuario() == usuario && u.getPassword() == password) {
 						if(u.isAutenticado() == false) {
 							
-							System.out.println("El usuario: " + usuario + " (" + tipoUsuario + ")" + " ha iniciado sesión correctamente.");
+							System.out.println("El usuario: " + usuario + " (" + tipoUsuario + ")" + " ha iniciado sesion correctamente.");
 							System.out.println();
 							u.setAutenticado(true);
 							Refugio.setUserConectado(u);
@@ -40,12 +40,12 @@ public class Autenticador implements IAdapterAutenticador {
 					}
 
 					else if(Refugio.getUsuarios().size() == contadorAux && u.isAutenticado() == false) {
-						System.out.println("El usuario o la contraseña es incorrecta.");
+						System.out.println("El usuario o la contrasena es incorrecta.");
 					}
 				}
 
 				else if(u.isAutenticado() == true) {
-					System.out.println("No es posible iniciar sesión, ya hay una sesión activa.");
+					System.out.println("No es posible iniciar sesion, ya hay una sesion activa.");
 					System.out.println();
 					iniciadoAux = true;
 				}

@@ -1,8 +1,7 @@
 package estadoSeguimiento;
 
-import java.util.*;
-
 import modelo.Seguimiento;
+import modelo.Visita;
 
 /**
  * 
@@ -13,12 +12,10 @@ public class EnCurso implements EstadoSeguimiento {
     public EnCurso() {
     }
 
-    public void enviarEncuesta(Seguimiento seguimiento) {
-    	
-    }
 
-    public void realizarSeguimiento(Seguimiento segumiento) {
-
+    public void realizarSeguimiento(Seguimiento seguimiento) {
+    	Visita visita = new Visita();
+    	seguimiento.setVisitas(visita);
     }
 
 

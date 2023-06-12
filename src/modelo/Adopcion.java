@@ -6,18 +6,32 @@ public class Adopcion {
 	
     private Cliente cliente;
     private Animal animal;
-    private Seguimiento seguimiento;
 
-    public Adopcion(Cliente cliente, Animal animal, Seguimiento seguimiento) {
+    public Adopcion(Cliente cliente, Animal animal) {
     	this.cliente = cliente;
     	this.animal = animal;
-    	this.seguimiento = seguimiento;
     }
     
     public Adopcion nuevaAdopcion() {
 		return null;
     	
     }
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Animal getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
+	}
     
 
 }

@@ -13,4 +13,10 @@ public class Visitador extends Usuario {
 
     public void completarEncuesta(EncuestaVisitador encuesta) {
     }
+
+	@Override
+	public String toString() {
+		return "Visitador " + nombre + "[tipoUsuario=" + tipoUsuario + "]";
+	}
+    
 }
