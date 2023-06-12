@@ -58,10 +58,11 @@ public abstract class Usuario implements IAdapterAutenticador {
 	public void setAutenticado(boolean isAutenticado) {
 		this.isAutenticado = isAutenticado;
 	}
+	
 	public void cerrarSesion() {
 		this.isAutenticado = false;
-		System.out.println("Cerrando la sesión...");
-		System.out.println(nombre+ " ha cerrado la sesión.");
+		System.out.println("Cerrando la sesion...");
+		System.out.println(nombre+ " ha cerrado la sesion.");
 	}
 	
 

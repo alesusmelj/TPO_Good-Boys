@@ -6,23 +6,18 @@ public class AnimalSalvaje extends Animal {
 		super();
 	}
     public AnimalSalvaje(Especie especie, double altura, double peso, double edadAproximada) {
-        super(especie, altura, altura, altura);
+        super(especie, altura, peso, edadAproximada);
     }
 
     public boolean esAdoptable() {
         return false;
     }
 
-    @Override
     public void recuperar(Animal animal) {
         this.estado.recuperar(this);
-
     }
 
-    @Override
     public void serAdoptado(Animal animal) {
         this.estado.serAdoptado(this);
-
     }
-
 }

@@ -1,13 +1,14 @@
 package modelo;
 
 import java.util.*;
-
 import estadoCondicionMedica.Enfermo;
 import estadoCondicionMedica.EstadoCondicionMedica;
 import estadoCondicionMedica.Saludable;
+import testMain.Utilidades;
 
 public abstract class Animal implements EstadoCondicionMedica{
-
+	
+	protected int idAnimal;
     protected Especie especie;
     protected EstadoCondicionMedica estado;
     protected double altura;
@@ -16,10 +17,13 @@ public abstract class Animal implements EstadoCondicionMedica{
     protected FichaTecnica fichaTecnica;
     
     public Animal() {
-    	
+    	this.idAnimal = Utilidades.contadorIdAnimal();
+    	this.estado = new Enfermo();
+
     }
 
     public Animal(Especie especie, double altura, double peso, double edadAproximada) {
+    	this.idAnimal = Utilidades.contadorIdAnimal();
         this.especie = especie;
         this.altura = altura;
         this.peso = peso;
@@ -27,21 +31,14 @@ public abstract class Animal implements EstadoCondicionMedica{
         this.estado = new Enfermo();
     }
 
-    public boolean esAdoptable() {
-        // TODO implement here
-        return false;
-    }
-    public void recuperar() {
+    public abstract boolean esAdoptable();
 
-    }
-    public void serAdoptado() {
+    public void recuperar(Animal animal){}
+    
+    public void serAdoptado(Animal animal){}
 
-    }
-
-    @Override
     public String toString() {
-        return  especie + " altura: " + altura + "cm, peso: " + peso + "kg, edad aproximada: "
-                + edadAproximada + " años ";
+        return  "idAnimal: "+idAnimal+ ", especie: "+ especie + " altura: " + altura + "cm, peso: " + peso + "kg, edad aproximada: " + edadAproximada + " anios " + "\n";
     }
 
     public Especie getEspecie() {
@@ -52,7 +49,7 @@ public abstract class Animal implements EstadoCondicionMedica{
         return estado;
     }
 
-    public void setEstado(EstadoCondicionMedica estado) {
+    public void cambiarEstado(EstadoCondicionMedica estado) {
         this.estado = estado;
     }
 
@@ -90,6 +87,14 @@ public abstract class Animal implements EstadoCondicionMedica{
 
 	public FichaTecnica getFichaTecnica() {
 		return fichaTecnica;
+	}
+
+	public int getIdAnimal() {
+		return idAnimal;
+	}
+
+	public void setIdAnimal(int idAnimal) {
+		this.idAnimal = idAnimal;
 	}
 	
 }

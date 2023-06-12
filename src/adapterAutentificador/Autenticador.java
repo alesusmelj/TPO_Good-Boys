@@ -2,6 +2,7 @@ package adapterAutentificador;
 
 import java.util.*;
 import modelo.EtipoUsuario;
+import modelo.Refugio;
 import modelo.Usuario;
 import testMain.Utilidades;
 
@@ -14,10 +15,10 @@ public class Autenticador implements IAdapterAutenticador {
 
     	boolean iniciadoAux = false;
     	int contadorAux = 0;
-    	System.out.println("Iniciando sesión...");
+    	System.out.println("Iniciando sesion...");
     	Utilidades.esperar(1);
 
-    	for(Usuario u:Utilidades.getUsuarios()) {
+    	for(Usuario u:Refugio.getInstance().getUsuarios()) {
     		contadorAux++;
 
 			if(iniciadoAux == false) {
@@ -26,23 +27,26 @@ public class Autenticador implements IAdapterAutenticador {
 					if(u.getNombreUsuario() == usuario && u.getPassword() == password) {
 						if(u.isAutenticado() == false) {
 							
-							System.out.println("El usuario: " + usuario + " (" + tipoUsuario + ")" + " ha iniciado sesión correctamente.");
+							System.out.println("El usuario: " + usuario + " (" + tipoUsuario + ")" + " ha iniciado sesion correctamente.");
+							System.out.println();
 							u.setAutenticado(true);
+							Refugio.getInstance().setUserConectado(u);
 							iniciadoAux = true;
 						}
 
 						else if(u.isAutenticado() == true) {
-							System.out.println("El usuario ya está conectado.");
+							System.out.println("El usuario ya esta conectado.");
 						}
 					}
 
-					else if(Utilidades.getUsuarios().size() == contadorAux && u.isAutenticado() == false) {
-						System.out.println("El usuario o la contraseña es incorrecta.");
+					else if(Refugio.getInstance().getUsuarios().size() == contadorAux && u.isAutenticado() == false) {
+						System.out.println("El usuario o la contrasenia es incorrecta.");
 					}
 				}
 
 				else if(u.isAutenticado() == true) {
-					System.out.println("No es posible iniciar sesión, ya hay una sesión activa.");
+					System.out.println("No es posible iniciar sesion, ya hay una sesion activa.");
+					System.out.println();
 					iniciadoAux = true;
 				}
 			}

@@ -3,6 +3,10 @@ package estrategiaAdapterNotificacion;
 import java.util.*;
 
 import modelo.Notificacion;
+import modelo.Refugio;
+import modelo.Visita;
+import modelo.Visitador;
+import testMain.Utilidades;
 
 /**
  * 
@@ -11,8 +15,10 @@ public class AdapterWhatsApp implements AdapterNotificadorWhatsApp {
 
     public AdapterWhatsApp() {
     }
-    public void enviarWhatsApp(Notificacion notificacion) {
-    	System.out.println("Enviando WhatsaApp a "+notificacion.getCliente().getNombre() + " " + notificacion.getCliente().getApellido()+" por WhatsApp: "+ " "+notificacion.getMensaje()+" ");
+    public void enviarWhatsApp(Notificacion notificacion, Visita visita) {
+		if(Refugio.getInstance().getUserConectado().getClass().equals(Visitador.class)) {
+			Utilidades.claseTimerSeguimientosVisitaWhatsapp(notificacion, visita, notificacion.getDiasPreferencia());
+		}
     }
 
 }

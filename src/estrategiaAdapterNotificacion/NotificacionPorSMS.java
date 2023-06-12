@@ -3,6 +3,7 @@ package estrategiaAdapterNotificacion;
 import java.util.*;
 
 import modelo.Notificacion;
+import modelo.Visita;
 
 /**
  * 
@@ -15,8 +16,8 @@ public class NotificacionPorSMS implements EstrategiaDeNotificacion {
         super();
         this.adapter = adapter;
     }
-    public void enviar(Notificacion notificacion) {
-    	this.adapter.enviarSMS(notificacion);
+    public void enviar(Notificacion notificacion, Visita visita) {
+    	this.adapter.enviarSMS(notificacion, visita);
     }
 	public void setAdapter(AdapterNotificadorSMS adapter) {
 		this.adapter = adapter;
