@@ -3,6 +3,7 @@ package modelo;
 import java.time.LocalTime;
 import java.util.*;
 
+import estadoSeguimiento.EnCurso;
 import estadoSeguimiento.EstadoSeguimiento;
 import testMain.Utilidades;
 
@@ -19,6 +20,8 @@ public class Seguimiento implements EstadoSeguimiento {
     public Seguimiento(Visitador responsableSeguimiento) {
     	this.responsableSeguimiento = responsableSeguimiento;
     	this.notificador = new Notificador();
+    	this.estado = new EnCurso();
+    	this.visitas = new ArrayList();
     }
 
     public void cambiarEstado(EstadoSeguimiento estado) {
